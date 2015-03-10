@@ -1,0 +1,11 @@
+http://blog.chromium.org/2012/03/v8-benchmark-suite-extended-with.html
+
+http://nerget.com/fluidSim/http://blog.chromium.org/2010/10/v8-benchmark-suite-updated.html
+
+http://blog.chromium.org/2010/10/v8-benchmark-suite-updated.html
+
+http://www.zdnet.com/blog/hardware/the-big-browser-benchmark-chrome-17-vs-opera-11-vs-firefox-11-vs-ie9-vs-safari-5/19079
+
+http://news.softpedia.com/news/The-Google-Chrome-V8-JavaScript-Benchmark-Adds-Physics-Simulation-Tests-259041.shtml
+
+http://html5doctor.com/outlines/

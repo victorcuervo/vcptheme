@@ -134,12 +134,12 @@
 		echo '</div>';
 	}
 	
-	if (function_exists('dd_fblike_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">AA';
+
+		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
 		 dd_fblike_generate('Like Box Count');
 		echo '</div>';
-	}
-	
+
+		
 	if (function_exists('dd_fbshare_generate')) {
 		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
 		dd_fbshare_generate('Normal');

@@ -204,7 +204,7 @@ function vcp_widgets_init() {
 
 
 	register_sidebar( array(
-			'name'          => __( 'Pie de Página Izquierdo', 'vcp' ),
+			'name'          => __( 'Pie de P�gina Izquierdo', 'vcp' ),
 			'id'            => 'footer1',
 			'description'   => __( 'Aparece abajo a la izquierda.', 'vcp' ),
 			'before_widget' => '<div>',
@@ -627,7 +627,7 @@ function vcp_informacion_articulo() {
 	 			
 				if ($visualizar[0]) {
 	 				$html = '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$visualizar[0].'">';
+	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/visualizar.png" alt="Visualizar Ejemplo"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
 	 				$html .= '</div>';
@@ -636,7 +636,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($descargar[0]) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$descargar[0].'">';
+	 				$html .= '<a href="'.$descargar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/download.png" alt="Descargar Ejemplo"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$descargar[0].'">Descargar Código Fuente</a></p>';
 	 				$html .= '</div>';
@@ -645,7 +645,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($errorcodigo[0]) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$errorcodigo[0].'">';
+	 				$html .= '<a href="'.$errorcodigo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/error.png" alt="Reportar Error"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código Fuente</a></p>';
 	 				$html .= '</div>';
@@ -654,7 +654,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($nombre[0] && $urlforo[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$urlforo[0].'">';
+	 				$html .= '<a href="'.$urlforo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/question.png" alt="Foro para Dudas '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Foro de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
@@ -663,7 +663,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($nombre[0] && $urlmanual[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$urlmanual[0].'">';
+	 				$html .= '<a href="'.$urlmanual[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/manual.png" alt="Manual sobre '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlmanual[0].'">Manual de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
@@ -672,7 +672,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($nombre[0] && $urltest[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$urltest[0].'">';
+	 				$html .= '<a href="'.$urltest[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/test.png" alt="Test de '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
@@ -681,7 +681,7 @@ function vcp_informacion_articulo() {
 
 	 			if ($nombre[0] && $urlcharla[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$urlcharla[0].'">';
+	 				$html .= '<a href="'.$urlcharla[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/talk.png" alt="Charla sobre '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlcharla[0].'">Charla sobre '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
@@ -690,13 +690,13 @@ function vcp_informacion_articulo() {
 
 				if ($nombre[0] && $urlcurso[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
-	 				$html .= '<a href="'.$urlcurso[0].'">';
+	 				$html .= '<a href="'.$urlcurso[0].'" target="_blank">';;
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/curso.png" alt="Curso de '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlcurso[0].'">Curso de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
 
-	 			$cabecera = '<div class="headline"><h3>Artículo</h3></div>'.
+	 			$cabecera = '<div class="headline"><h3>Art�culo</h3></div>'.
 	 							'<div class="panel panel-primary">'.
  									'<div class="panel-body">'.
  										'<div class="row">';

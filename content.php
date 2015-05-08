@@ -135,7 +135,7 @@
 	}
 	
 	if (function_exists('dd_fblike_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
+		echo '<div class="col-md-1 col-sm-1 col-xs-2">AA';
 		 dd_fblike_generate('Like Box Count');
 		echo '</div>';
 	}

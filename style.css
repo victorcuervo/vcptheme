@@ -1,0 +1,194 @@
+/*
+Theme Name: VCP
+Theme URI: http://www.victorcuervo.com
+Author: Víctor Cuervo
+Author URI: http://www.victorcuervo.com/
+Description: DESCRIPCION
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain: twentyfourteen 
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+/*
+#cabecera {
+	background: url('img/cabecera.png') no-repeat;
+	height: 150px;
+	border-top: 1px solid #fff;
+}
+*/
+
+#destacados {
+	background-color: #e3e3e3;
+	color:orange;
+}
+
+#destacados .navbar-text {
+	margin: 0;
+	padding: 10px 15px;
+}
+
+h2, h3 {
+	margin: 0 0 -2px;
+	padding: 10px 0 5px;
+	display: inline-block;
+	border-bottom: 3px solid #3365A3;
+}
+
+
+
+#post-info {
+	margin-bottom: 15px;
+}
+
+#post-info .glyphicon{
+	color: #3365A3;
+	padding-left: 15px;
+}
+
+#post-url {
+	margin-top: 15px;
+}
+
+
+#author {
+	font-size: .9em;
+}
+#author .img-thumbnail {
+	margin-left: 10px;
+}
+#author .genericon{
+	font-size: 2em;
+	margin-left: 10px;
+	text-decoration: none;
+}
+
+
+
+
+
+#footer {
+	background-color:#337fa3;
+	margin-top: 10px;
+	padding: 10px;
+	color: #e0e0e0;	
+}
+
+#footer h3 {
+	color: #fff;
+	border-bottom: 3px solid orange;
+}
+
+#footer a, #footer a:hover {
+	color:#fff;
+}
+
+#footer .genericon{
+	font-size: 3em;
+	margin-left: 30px;
+	text-decoration: none;
+}
+
+#footer a:hover{
+	color:orange;
+}
+
+
+
+
+.headline {
+	border-bottom: 1px dotted #cecece;
+    display: block;
+    margin: 10px 0;
+}
+
+.headline h3 {
+
+	margin: 0 0 -2px;
+	padding-bottom: 5px;
+	display: inline-block;
+}
+
+/* Para los últimos artículos */
+#lastArticles .media:first-child {
+	height: 150px;
+}
+
+
+
+
+#copyright  {
+	background-color: #3365A3;
+	color: #fff;
+	height: 50px;
+	padding: 10px;
+	border-top: 1px solid #000;
+}
+
+#copyright a, #copyright a:hover {
+ color: #fff;
+}
+
+
+/* Eliminar cosas del bootstrap */
+.page-header {
+	border-bottom: 0px;
+	margin-top: 0px;
+}
+
+.navbar {
+	border-bottom: 0px;
+}
+
+.page-header > h1, .page-header > h1 > small {
+	color:#fff;
+}
+
+
+/* Para la publicidad */
+.ads {
+	text-align: center;	
+	padding: 20px 0;
+	margin: 10px 0;
+}
+
+
+/* Menu del pie de pagina */
+#copyright ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#copyright ul li { display: inline; }
+
+#copyright li:before {
+content: " | ";
+}
+
+#copyright li:first-child:before {
+content: none;
+}
+
+/* Contenido */
+.entry-content h3 {
+	margin-bottom: 5px;
+	border-bottom: none;
+}
+
+.entry-content h2 {
+	margin-bottom: 5px;
+}
+
+
+.wp-post-image {
+   margin-bottom:10px;
+   margin-left:10px;
+
+}

@@ -215,7 +215,7 @@ function vcp_widgets_init() {
 
 
 	register_sidebar( array(
-			'name'          => __( 'Pie de PÃ¡gina Central', 'vcp' ),
+			'name'          => __( 'Pie de P‡gina Central', 'vcp' ),
 			'id'            => 'footer2',
 			'description'   => __( 'Aparece abajo en el centro.', 'vcp' ),
 			'before_widget' => '<div>',
@@ -225,7 +225,7 @@ function vcp_widgets_init() {
 		) );
 
 	register_sidebar( array(
-		'name'          => __( 'Pie de PÃ¡gina Derecho', 'vcp' ),
+		'name'          => __( 'Pie de P‡gina Derecho', 'vcp' ),
 		'id'            => 'footer3',
 		'description'   => __( 'Aparece abajo a la derecha.', 'vcp' ),
 		'before_widget' => '<div>',
@@ -625,7 +625,7 @@ function vcp_informacion_articulo() {
 
 	 			$html = '';
 	 			
-				if ($visulizar[0]) {
+				if ($visualizar[0]) {
 	 				$html = '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$visualizar[0].'">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/visualizar.png" alt="Visualizar Ejemplo"/></a>';

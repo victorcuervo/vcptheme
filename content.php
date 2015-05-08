@@ -43,7 +43,7 @@
 			<span class="genericon genericon-month"></span>
 			<span><?php the_date('d/M/Y');?></span>
 
-			<!-- Categoría -->
+			<!-- CategorÔøΩa -->
 			<span class="genericon genericon-category"></span>
 			<span><?php
 					$categories = get_the_category();
@@ -111,22 +111,28 @@
 	<?php
 
 	// Si hay ejemplos relacionados los publicamos
+	// Sobre todo para Manual Web
 	echo vcp_post_ejemplos();
 
-	// Volcamos los vídeos
+	// Volcamos los v√≠deos
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
 	
 	if ($video[0]) { 
 		$shortcode = '[tubepress mode="playlist" playlistValue="'.$video[0].'"]';
-		echo '<h3>Vídeos sobre '.$nombre[0].'</h3><div>';
+		echo '<h3>V√≠deos sobre '.$nombre[0].'</h3><div>';
 		echo apply_filters('the_content', $shortcode);
 		echo '</div>';
 	}
+	
+	// Soporte para el plugin WP Related Posts
+	if (function_exists(wp_related_posts))
+		wp_related_posts();
+	
 
 
-	echo '<h3>Comparteme...</h3>';
-	echo '<p>Si <strong>te ha gustado el artículo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
+	echo '<h3>Difunde el Conocimiento</h3>';
+	echo '<p>Si <strong>te ha gustado el art√≠culo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
 	echo '<div class="row">';
 	if (function_exists('dd_twitter_generate')) {
 		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
@@ -134,11 +140,6 @@
 		echo '</div>';
 	}
 	
-
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
-		 dd_fblike_generate('Like Box Count');
-		echo '</div>';
-
 		
 	if (function_exists('dd_fbshare_generate')) {
 		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
@@ -222,8 +223,8 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 		<?php vcp_informacion_articulo(); ?>
 		
 
-		<div class="headline"><h3>Artículos Relacionados</h3></div>
-		<?php similar_posts(); ?>
+		<div class="headline"><h3>Art√≠culos Relacionados</h3></div>
+		<?php if (function_exists(similar_posts)) similar_posts(); ?>
 
 
 		<div class="headline"><h3><?php echo get_option('vcp_categorias');?></h3></div>

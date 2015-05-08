@@ -63,8 +63,8 @@ function twentyfourteen_setup() {
 	
 	// REGISTRAMOS LOS DOS MENÚS QUE VAMOS A UTILIZAR
 	register_nav_menus( array(
-		'primary'   => __( 'Menú Superior', 'twentyfourteen' ),
-		'secondary' => __( 'Menú Elementos Importantes', 'twentyfourteen' ),
+		'primary'   => __( 'Men� Superior', 'twentyfourteen' ),
+		'secondary' => __( 'Men� Elementos Importantes', 'twentyfourteen' ),
 		'menu_footer' => __( 'Menú del pie de página', 'vcp')
 	) );
 
@@ -596,6 +596,8 @@ function vcp_get_rss($nombre, $url, $numeroitems) {
 
 function vcp_post_ejemplos() {
 
+	// Se trae ejemplos de una URL rss
+
 	$nombre = get_post_custom_values('nombreforo');
 	$ejemplos = get_post_custom_values('urlejemplos');
 
@@ -608,7 +610,7 @@ function vcp_post_ejemplos() {
 }
 
 
-/* Función que devuelve la información de descarga, manual, test,... del artículo */
+/* Funci�n que devuelve la información de descarga, manual, test,... del artículo */
 
 function vcp_informacion_articulo() {
 	

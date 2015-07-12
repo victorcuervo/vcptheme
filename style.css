@@ -154,7 +154,7 @@ h2, h3 {
 .ads {
 	text-align: center;	
 	padding: 20px 0;
-	margin: 10px 0;
+	margin: 5px 0;
 }
 
 
@@ -187,7 +187,7 @@ content: none;
 }
 
 
-.wp-post-image {
+.entry-content .wp-post-image {
    margin-bottom:10px;
    margin-left:10px;
 

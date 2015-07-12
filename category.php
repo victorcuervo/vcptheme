@@ -18,8 +18,10 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 			<header class="archive-header">
+				<div class="headline">
 				<h1 class="archive-title"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1>
-
+				</div>
+				
 				<?php
 
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
@@ -36,7 +38,7 @@ get_header(); ?>
 
 
 			<div class="headline">
-			<h2>Categor�as de <?php echo single_cat_title( '', false )?></h2>
+			<h2>Categorías de <?php echo single_cat_title( '', false )?></h2>
 			</div>
 
 				<?php
@@ -79,7 +81,7 @@ get_header(); ?>
 
 		<?php
 
-			function get_excerpt_by_id2($post_id){
+		function get_excerpt_by_id2($post_id){
 			$the_post = get_post($post_id); //Gets post ID
 			$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 			$excerpt_length = 20; //Sets excerpt length by word count

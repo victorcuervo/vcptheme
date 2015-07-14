@@ -9,7 +9,15 @@
  * @since Twenty Fourteen 1.0
  */
 
-get_header(); ?>
+get_header();
+
+
+// category representa el objeto que contiene la información de la categoría
+$category = get_queried_object();
+
+
+
+?>
 
 <div id="cuerpo" class="container">
 	<div class="row">
@@ -37,11 +45,43 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 
+		
+			
+			<?php
+			
+				/* Categorias */
+				$categorias = get_categories(array('child_of'=>$category->term_id));
+				
+			
+				
+				if (sizeof($categorias)>0) {							
+					printf('<div class="headline"><h2>Categorías de %s</h2></div>',single_cat_title( '', false ));
+								
+					foreach ($categorias as $categoria) {
+						// echo $categoria->name.'<br>';
+						$categoria_link = get_category_link($categoria->term_id);
+						echo "<a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>{$categoria->name}</a>";
+					}
+									
+				}
+			?>
+			
+			
+			
 			<div class="headline">
-			<h2>Categorías de <?php echo single_cat_title( '', false )?></h2>
+			<h2>Elementos de <?php echo single_cat_title( '', false )?></h2>
 			</div>
 
 				<?php
+				
+					/* Hay que devidir entre categorias y lo que son tags. Los Tags también son una forma de organizar las cosas */
+				
+				
+				
+				
+				
+				
+				
 					// Obtengo las tags que tengan ¿el mismo slug?
 					$tags = get_tags(array('name__like'=>single_cat_title( '', false ).' '));
 					$html = '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
@@ -88,15 +128,15 @@ get_header(); ?>
 			$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
 			$words = explode(' ', $the_excerpt, $excerpt_length + 1);
 			if(count($words) > $excerpt_length) :
-			array_pop($words);
-			array_push($words, '…');
-			$the_excerpt = implode(' ', $words);
+				array_pop($words);
+				array_push($words, '…');
+				$the_excerpt = implode(' ', $words);
 			endif;
 			$the_excerpt = '<p>' . $the_excerpt . '</p>';
 			return $the_excerpt;
 		}
 		
-		$category = get_queried_object();
+		
 
 		$recent_posts = wp_get_recent_posts(array('category' => $category->term_id, 'numberposts' => '6', 'post_status' => 'publish'));
 		$x = 0;

@@ -12,7 +12,15 @@
  */
 
 
-get_header(); ?>
+get_header();
+
+// El objeto TAG que manejamos en la página
+$tag = get_queried_object();
+$tag_name = single_tag_title( '', false );
+$tag_slug = $tag->slug;
+
+
+?>
 
 <div id="cuerpo" class="container">
 	<div class="row">
@@ -20,8 +28,7 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : 
 
-				// El objeto TAG que manejamos en la página
-				$tag = get_queried_object();
+				
 
 
 			?>
@@ -31,10 +38,18 @@ get_header(); ?>
 
 				<?php
 
+				
+				
+				
+				
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
+					/* HAY QUE VALIDAR QUE TIENE URL, SI NO NO METO LA IMAGEN */
 					if (function_exists('z_taxonomy_image_url'))
 						echo '<img src="'.z_taxonomy_image_url($tag->term_id).'" class="pull-right" alt="'.single_tag_title( '', false ).'"/>';
 
+					
+					
+					
 					// Show an optional term description.
 					$term_description = term_description();
 					if ( ! empty( $term_description ) ) :
@@ -44,52 +59,15 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 			<?php
+			
+				// Ponemos la información de volver.
+				printf ('%s', vcp_volver($tag_slug));
 				
-				
-				
-				// Volver
-				echo vcp_volver($tag->slug);
-				
-
-					
-
+				// Pintamos las tags dado un título
+				printf ('%s', vcp_tags($tag_name));
 
 			?>
 
-
-				<?php
-					// Obtengo las tags que tengan ¿el mismo slug?
-					$tags = get_tags(array('name__like'=>single_tag_title( '', false ).' '));
-					$html = '<div class="row"><div class="col-md-3">';
-
-					$numtags = ceil(sizeof($tags)/4);
-					$x=0;
-
-					foreach ( $tags as $etiqueta ) {
-						$tag_link = get_tag_link( $etiqueta->term_id );
-
-						if($x==$numtags) {
-							$html .= '</div><div class="col-md-3">';
-							$x=0;
-						}
-
-								
-						$html .= "<a href='{$tag_link}' title='{$etiqueta->name} Tag' class='{$etiqueta->slug}'>";
-						$html .= "{$etiqueta->name}</a><br/>";
-						$x++;
-					}
-					$html .= '</div></div>';
-					
-
-
-				?>
-
-		
-		<?php if ($numtags>0):?>
-			<div class="headline">
-			<h2>Elementos de <?php echo single_tag_title( '', false )?></h2>
-			</div>
-		<?php echo $html; endif; ?>
 
 
 		<div class="headline">

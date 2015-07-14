@@ -750,12 +750,93 @@ function vcp_volver($slug) {
 
 
 
+function vcp_tags($nombre) {
+
+/*
+ * Función que devuelve una estructura de etiquetas a partir de un nombre recibido como parámetro.
+ * Serían las tags que coinciden con dicho nombre
+ */
+
+	// Buscamos tags con el nombre y un espacio
+	$tags = get_tags(array('name__like'=>$nombre.' '));
+	
+	$html = '';
 
 
+	if (sizeof($tags)>0) {
+
+		$html = '<div class="headline"><h2>Elementos de '.$nombre.'</h2></div>';			
+		$html .= '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
+		
+		$numtags = ceil(sizeof($tags)/4);
+		
+		$x=0;
+		
+		foreach ( $tags as $tag ) {
+			
+			$tag_link = get_tag_link( $tag->term_id );
+		
+			if($x==$numtags) {
+				$html .= '</div><div class="col-md-3 col-sm-6 col-xs-6">';
+				$x=0;
+			}
+		
+			$html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+			$html .= "{$tag->name}</a><br/>";
+			$x++;
+		}
+		
+		$html .= '</div></div>';
+		
+
+	}
+	
+	return $html;
 
 
+}
+
+function vcp_categories($nombre,$id) {
+
+	/*
+	* Función que devuelve una estructura de categorias a partir de un nombre e id de categoria recibido como parámetro.
+	* Serían las subcategorías de una categoría
+	*/
 
 
+	$categorias = get_categories(array('child_of'=>$id));
+	$html = '';
+
+	if (sizeof($categorias)>0) {
+
+		$html = '<div class="headline"><h2>Categorías de '.$nombre.'</h2></div>';
+		$html .= '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
+		
+		$numcategs = ceil(sizeof($categorias)/4);
+		
+		$x=0;
+		
+		foreach ( $categorias as $categoria ) {
+				
+			$categoria_link = get_category_link($categoria->term_id);
+		
+			if($x==$numcategs) {
+				$html .= '</div><div class="col-md-3 col-sm-6 col-xs-6">';
+				$x=0;
+			}
+		
+			$html .= "<a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>{$categoria->name}</a><br/>";
+			$x++;
+		}
+		
+		$html .= '</div></div>';
+
+
+	}
+
+	return $html;
+
+}
 
 
 

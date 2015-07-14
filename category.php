@@ -14,7 +14,10 @@ get_header();
 
 // category representa el objeto que contiene la información de la categoría
 $category = get_queried_object();
-
+// Nombre de la categoria
+$category_name = single_cat_title( '', false );
+// Id de la categoría
+$category_id = $category->term_id;
 
 
 ?>
@@ -48,66 +51,17 @@ $category = get_queried_object();
 		
 			
 			<?php
-			
-				/* Categorias */
-				$categorias = get_categories(array('child_of'=>$category->term_id));
+					
 				
-			
+				// Pintamos las categorías dado un nombre de categoria y su id
+				printf ('%s', vcp_categories($category_name,$category_id));	
 				
-				if (sizeof($categorias)>0) {							
-					printf('<div class="headline"><h2>Categorías de %s</h2></div>',single_cat_title( '', false ));
-								
-					foreach ($categorias as $categoria) {
-						// echo $categoria->name.'<br>';
-						$categoria_link = get_category_link($categoria->term_id);
-						echo "<a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>{$categoria->name}</a>";
-					}
-									
-				}
+				// Pintamos las tags dado un título
+				printf ('%s', vcp_tags($category_name));
+				
+				
+				
 			?>
-			
-			
-			
-			<div class="headline">
-			<h2>Elementos de <?php echo single_cat_title( '', false )?></h2>
-			</div>
-
-				<?php
-				
-					/* Hay que devidir entre categorias y lo que son tags. Los Tags también son una forma de organizar las cosas */
-				
-				
-				
-				
-				
-				
-				
-					// Obtengo las tags que tengan ¿el mismo slug?
-					$tags = get_tags(array('name__like'=>single_cat_title( '', false ).' '));
-					$html = '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
-
-					$numtags = ceil(sizeof($tags)/4);
-
-					$x=0;
-
-					foreach ( $tags as $tag ) {
-						$tag_link = get_tag_link( $tag->term_id );
-
-						if($x==$numtags) {
-							$html .= '</div><div class="col-md-3 col-sm-6 col-xs-6">';
-							$x=0;
-						}
-
-								
-						$html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-						$html .= "{$tag->name}</a><br/>";
-						$x++;
-					}
-					$html .= '</div></div>';
-					echo $html;
-
-
-				?>
 
 
 

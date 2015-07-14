@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Home Page
- * Plantilla para la p‡gina principal
+ * Plantilla para la pï¿½gina principal
  * @package WordPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
@@ -11,7 +11,7 @@
 get_header(); ?>
 
 <div id="cuerpo" class="container">
-	<div class="row">
+
 		
 
 			<?php if ( have_posts() ) : the_post(); the_content();?>
@@ -135,7 +135,6 @@ get_header(); ?>
 				endif;
 			?>
 	
-	</div><!-- #Fin Cuerpo-->
 </div><!-- #Fin Contenido Principal -->
 
 <?php

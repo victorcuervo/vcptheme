@@ -63,8 +63,8 @@ function twentyfourteen_setup() {
 	
 	// REGISTRAMOS LOS DOS MEN√öS QUE VAMOS A UTILIZAR
 	register_nav_menus( array(
-		'primary'   => __( 'Menú Superior', 'twentyfourteen' ),
-		'secondary' => __( 'Menú Elementos Importantes', 'twentyfourteen' ),
+		'primary'   => __( 'Men√∫ Superior', 'twentyfourteen' ),
+		'secondary' => __( 'Men√∫ Elementos Importantes', 'twentyfourteen' ),
 		'menu_footer' => __( 'Men√∫ del pie de p√°gina', 'vcp')
 	) );
 
@@ -204,7 +204,7 @@ function vcp_widgets_init() {
 
 
 	register_sidebar( array(
-			'name'          => __( 'Pie de Página Izquierdo', 'vcp' ),
+			'name'          => __( 'Pie de P√°gina Izquierdo', 'vcp' ),
 			'id'            => 'footer1',
 			'description'   => __( 'Aparece abajo a la izquierda.', 'vcp' ),
 			'before_widget' => '<div>',
@@ -215,7 +215,7 @@ function vcp_widgets_init() {
 
 
 	register_sidebar( array(
-			'name'          => __( 'Pie de Página Central', 'vcp' ),
+			'name'          => __( 'Pie de P√°gina Central', 'vcp' ),
 			'id'            => 'footer2',
 			'description'   => __( 'Aparece abajo en el centro.', 'vcp' ),
 			'before_widget' => '<div>',
@@ -225,7 +225,7 @@ function vcp_widgets_init() {
 		) );
 
 	register_sidebar( array(
-		'name'          => __( 'Pie de Página Derecho', 'vcp' ),
+		'name'          => __( 'Pie de P√°gina Derecho', 'vcp' ),
 		'id'            => 'footer3',
 		'description'   => __( 'Aparece abajo a la derecha.', 'vcp' ),
 		'before_widget' => '<div>',
@@ -610,7 +610,7 @@ function vcp_post_ejemplos() {
 }
 
 
-/* Función que devuelve la informaci√≥n de descarga, manual, test,... del art√≠culo */
+/* FunciÔøΩn que devuelve la informaci√≥n de descarga, manual, test,... del art√≠culo */
 
 function vcp_informacion_articulo() {
 	
@@ -698,7 +698,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '</div>';
 	 			}
 
-	 			$cabecera = '<div class="headline"><h3>Artículo</h3></div>'.
+	 			$cabecera = '<div class="headline"><h3>Art√≠culo</h3></div>'.
 	 							'<div class="panel panel-primary">'.
  									'<div class="panel-body">'.
  										'<div class="row">';

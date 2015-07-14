@@ -610,7 +610,7 @@ function vcp_post_ejemplos() {
 }
 
 
-/* Funci�n que devuelve la información de descarga, manual, test,... del artículo */
+/* Función que devuelve la información de descarga, manual, test,... del artículo */
 
 function vcp_informacion_articulo() {
 	
@@ -711,6 +711,55 @@ function vcp_informacion_articulo() {
 	 	
 	 	
 }
+
+
+
+
+
+
+function vcp_volver($slug) {
+
+/*
+ * Función que recibe un slug para crear un volver utilizando su slug.
+ * El volver puede ser una categoría, si no es una categoría es una etiqueta
+ * Por ejemplo:
+ *  google-calendar-eventos-repetitivos
+ *  la categiría es google calendar
+ *  si google-calendar-eventos es una categoria uso el CATEGORY
+ *  si no uso el TAG 				
+ */	
+
+	// Quitamos el último término
+	$slug_a_buscar = substr($slug,0,strrpos($slug,'-'));
+	
+	// Validamos si es una categoría
+	$categoria = get_category_by_slug( $slug_a_buscar );
+	
+	if (empty($categoria)) {
+		// Si no es una categoría lo buscamos como tag
+		$etiqueta = get_term_by('slug',$slug_a_buscar,'post_tag');
+		$etiqueta_link = get_tag_link($etiqueta->term_id);
+		return "<span class='genericon genericon-rewind'></span> <a href='{$etiqueta_link}' title='{$etiqueta->name} Tag' class='{$etiqueta->slug}'>Volver a {$etiqueta->name}</a>";
+	} else {
+		$categoria_link = get_category_link($categoria->term_id);
+		return "<span class='genericon genericon-rewind'></span> <a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>Volver a {$categoria->name}</a>";
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

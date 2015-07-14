@@ -44,25 +44,14 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 			<?php
-				// Volver a la categoría padre
-				$parenttag = explode('-',$tag->slug);
-				$parenttagname = explode(' ',single_tag_title( '', false ) );
-				if (sizeof($parenttag) > 2) {
-					// Es un tag
+				
+				
+				
+				// Volver
+				echo vcp_volver($tag->slug);
+				
+
 					
-					$salida = $parenttagname[0];
-					$salidaurl = $parenttag[0];
-					for ($y=1;$y<sizeof($parenttag)-1;$y++) {
-						$salida =$salida.' '.$parenttagname[$y];
-						$salidaurl =$salidaurl.'-'.$parenttag[$y];
-					}
-					echo '<span class="genericon genericon-rewind"></span> <a href="../'.$salidaurl.'">Volver a '.$salida.'</a>';
-
-				} else {
-					// Es una categoría
-					echo '<span class="genericon genericon-rewind"></span> <a href="../../categoria/'.$parenttag[0].'">Volver a '.$parenttagname[0].'</a>';;
-				}
-
 
 
 			?>
@@ -98,7 +87,7 @@ get_header(); ?>
 		
 		<?php if ($numtags>0):?>
 			<div class="headline">
-			<h2>Categorías de <?php echo single_tag_title( '', false )?></h2>
+			<h2>Elementos de <?php echo single_tag_title( '', false )?></h2>
 			</div>
 		<?php echo $html; endif; ?>
 

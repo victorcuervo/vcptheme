@@ -118,6 +118,10 @@
 	// Si hay ejemplos relacionados los publicamos
 	// Sobre todo para Manual Web
 	echo vcp_post_ejemplos();
+	
+	// Soporte para el plugin WP Related Posts
+	if (function_exists(wp_related_posts))
+		wp_related_posts();
 
 	// Volcamos los vídeos
 	$nombre = get_post_custom_values('nombreforo');
@@ -125,11 +129,10 @@
 	
 	if ($video[0]) { 
 		$shortcode = '[tubepress mode="playlist" googleApiKey="AIzaSyBS-zg1hfcDxlw3mawgYwoS3Rbl3-xqep4" playlistValue="'.$video[0].'"]';
-		echo '<h3>Vídeos sobre '.$nombre[0].'</h3><div>';
+		echo '<div class="headline"><h3>Vídeos sobre '.$nombre[0].'</h3><div>';
 		echo apply_filters('the_content', $shortcode);
 		echo '</div>';
 	}
-	
 
 	echo '<div class="headline"><h3>Difunde el Conocimiento</h3></div>';
 	echo '<p>Si <strong>te ha gustado el artículo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
@@ -164,8 +167,6 @@
 
  ?>
 
-
-
 <?php dynamic_sidebar( 'adspost' ); ?>
 
 <?php 
@@ -176,7 +177,7 @@ if ( comments_open() || get_comments_number() ) {
 
 // Para editar el Post
 edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' ); 
-					?>
+?>
 
 
 </div><!-- #FIN DE LA COLUMNA -->

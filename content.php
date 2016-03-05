@@ -92,9 +92,9 @@
 				if ($sitiothumb == 'center')
 					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive"));
 				else if ($sitiothumb == 'left')
-					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive"));
+					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumbnail"));
 				else
-					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive"));
+					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumbnail"));
 			?>		
 		</div>
 				
@@ -226,7 +226,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 		<div class="headline"><h3><?php echo get_option('vcp_categorias');?></h3></div>
 
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-sm-6">
 			<?php
 				$args = array(
 				  'orderby' => 'name',
@@ -239,7 +239,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 
 				foreach ( $categories as $category ) {
 					echo '<a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a><br/>';
-					if ($x==$mitad) echo "</div><div class='col-md-6'>";
+					if ($x==$mitad) echo "</div><div class='col-md-6 col-sm-6'>";
 					$x++;
 				}
 				

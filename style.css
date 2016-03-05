@@ -55,14 +55,16 @@ h2, h3 {
 	margin-top: 15px;
 }
 
+.wp-post-image {
+	margin: 0 10px 20px 10px;
+}
+
 
 #author {
 	font-size: .9em;
 }
 #author .img-thumbnail {
 	margin-left: 10px;
-	margin-right: 10px;
-	margin-bottom: 20px;
 }
 #author .genericon{
 	font-size: 2em;

@@ -82,7 +82,7 @@ get_header(); ?>
 			<h2><?php echo get_option('vcp_categorias');?></h2>
 		</div>
 			<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3 col-sm-3">
 			<?php
 				$args = array(
 				  'orderby' => 'name',
@@ -96,7 +96,7 @@ get_header(); ?>
 				foreach ( $categories as $category ) {
 					echo '<a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a><br/>';
 					if ($x==$cuarto) {
-						echo "</div><div class='col-md-3'>";
+						echo "</div><div class='col-md-3 col-sm-3'>";
 						$x=0;
 					} else
 						$x++;

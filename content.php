@@ -83,12 +83,21 @@
 	<div class="entry-content">
 
 
-	<!-- PONEMOS EL THUMBNAIL -->
-	<div class="pull-right">
-		<?php the_post_thumbnail(); ?>
-	</div>
-
-	
+		<!-- PONEMOS EL THUMBNAIL -->
+		<div class="pull-right">
+		
+			<?php 
+				$sitiothumb =  get_option('vcp_thumbnail');
+				
+				if ($sitiothumb == 'center')
+					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive"));
+				else if ($sitiothumb == 'right')
+					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive"));
+				else
+					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive"));
+			?>		
+		</div>
+				
 			<?php
 				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
 

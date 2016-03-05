@@ -84,14 +84,14 @@
 
 
 		<!-- PONEMOS EL THUMBNAIL -->
-		<div class="pull-right">
+		<div>
 		
 			<?php 
 				$sitiothumb =  get_option('vcp_thumbnail');
 				
 				if ($sitiothumb == 'center')
 					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive"));
-				else if ($sitiothumb == 'right')
+				else if ($sitiothumb == 'left')
 					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive"));
 				else
 					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive"));

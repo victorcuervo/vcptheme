@@ -14,6 +14,8 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
+ 
+
 function twentyfourteen_customize_register( $wp_customize ) {
 
 
@@ -68,6 +70,22 @@ function twentyfourteen_customize_register( $wp_customize ) {
         'section'    => 'vcp_featured_content',
         'settings'   => 'vcp_categorias',
     ));
+    
+    
+    // Para thumbnail de los post: right, center o left
+    $wp_customize->add_setting('vcp_thumbnail', array(
+    		'default'        => 'right',
+    		'capability'     => 'edit_theme_options',
+    		'type'           => 'option',
+    
+    ));
+    
+    $wp_customize->add_control('vcp_thumbnail_control', array(
+    		'label'      => __('Thumbnail', 'vcp'),
+    		'section'    => 'vcp_featured_content',
+    		'settings'   => 'vcp_thumbnail',
+    ));
+    
 
 
 

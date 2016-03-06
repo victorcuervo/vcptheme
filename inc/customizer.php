@@ -86,7 +86,19 @@ function twentyfourteen_customize_register( $wp_customize ) {
     		'settings'   => 'vcp_thumbnail',
     ));
     
-
+    // Para saber si se quiere editorial o no. En caso que se quiera poner ID de categoría, si no 0
+    $wp_customize->add_setting('vcp_editorial', array(
+    		'default'        => '0',
+    		'capability'     => 'edit_theme_options',
+    		'type'           => 'option',
+    
+    ));
+    
+    $wp_customize->add_control('vcp_editorial_control', array(
+    		'label'      => __('Editorial', 'vcp'),
+    		'section'    => 'vcp_featured_content',
+    		'settings'   => 'vcp_editorial',
+    ));
 
 
 

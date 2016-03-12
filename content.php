@@ -92,9 +92,9 @@
 				if ($sitiothumb == 'center')
 					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive"));
 				else if ($sitiothumb == 'left')
-					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumbnail"));
+					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
 				else
-					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumbnail"));
+					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
 			?>		
 		</div>
 				
@@ -127,10 +127,17 @@
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
 	
-	if ($video[0]) { 
-		$shortcode = '[tubepress mode="playlist" googleApiKey="AIzaSyBS-zg1hfcDxlw3mawgYwoS3Rbl3-xqep4" playlistValue="'.$video[0].'"]';
-		echo '<div class="headline"><h3>Vídeos sobre '.$nombre[0].'</h3><div>';
-		echo apply_filters('the_content', $shortcode);
+	if ($video[0]) { 			
+		echo '<div class="headline"><h3>Vídeos sobre '.$nombre[0].'</h3></div><div>';
+		//$shortcode = '[ypt playlist_id='.$video[0].']';
+		//echo apply_filters('the_content', $shortcode);
+		echo '<script src="https://apis.google.com/js/platform.js"></script>';
+		echo '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
+		
+		// Por el código metido en línea de código
+		$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$video[0]);
+		
+		echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';				
 		echo '</div>';
 	}
 

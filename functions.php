@@ -293,7 +293,9 @@ function vcp_scripts() {
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.1.1',true);
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.0.2' );
-
+	
+	if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
+		wp_enqueue_script( 'comment-reply' );
 
 }
 add_action( 'wp_enqueue_scripts', 'vcp_scripts' );

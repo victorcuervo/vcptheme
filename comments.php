@@ -62,7 +62,9 @@ if ( post_password_required() ) {
 
 	<?php endif; // have_comments() ?>
 
-	<?php comment_form( array(
+	<?php 
+	
+	comment_form( array(
 		'title_reply'=>'¿Algo que nos quieras comentar?',
 		'label_submit' => 'Enviar',
 		 'fields' => apply_filters( 'comment_form_default_fields', array(
@@ -78,7 +80,6 @@ if ( post_password_required() ) {
 		      ( $req ? '<span class="required">*</span>' : '' ) .
 		      '<input id="correoelectronico" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 		      '" size="30"' . $aria_req . ' /></p>',
-
 		    'url' =>
 		      '<p class="comment-form-url"><label for="url">' .
 		      __( 'Sitio Web', 'twentyfourteen' ) . '</label>' .
@@ -90,6 +91,8 @@ if ( post_password_required() ) {
 			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comentario ', 'twentyfourteen' ) . '</label><textarea id="comment" class="form-control" name="comment" cols="70" rows="8" aria-required="true"></textarea></p>',
 			'comment_notes_before' => '<p class="comment-notes">Déjanos tu comentario, no te preocupes que tu email no será publicado</p>',
 			'comment_notes_after' => ''
-		)); ?>
+		)); 
+		
+		?>
 
 </div><!-- #comments -->

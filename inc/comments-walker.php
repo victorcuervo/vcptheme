@@ -18,9 +18,7 @@ class origines_walker_comment extends Walker_Comment {
      * Starts the list before the CHILD elements are added. */
     function start_lvl( &$output, $depth = 0, $args = array() ) {       
         $GLOBALS['comment_depth'] = $depth + 1; ?>
- 
-    
-        
+      
     <?php }
  
     /** END_LVL 
@@ -39,7 +37,7 @@ class origines_walker_comment extends Walker_Comment {
         $GLOBALS['comment'] = $comment;
         $ocommentmail = get_comment_author_email(); ?>
         
-    <div class="media well">
+    <div id="comment-<?php comment_ID() ?>" class="media well">
         
         <a class="pull-left" href="<?php comment_author_url(); ?>" target="_blank">
                         <?php echo origines_get_avatar( $ocommentmail, $args['avatar_size'] ); ?>
@@ -67,7 +65,7 @@ class origines_walker_comment extends Walker_Comment {
                         <div class="comment-body"><?php comment_text(); ?></div>
                         
                         <div class="reply">
-                                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => 'Responder', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => 'Responder', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ),$comment->comment_ID ); ?>
                         </div><!-- .reply -->
                          
     <?php }
@@ -90,6 +88,12 @@ class origines_walker_comment extends Walker_Comment {
     <?php }
     
 }
+
+/* Formatear el texto de reply */ 
+function origine_reply_link($link, $args, $comment, $post){
+	return str_replace("class='comment-reply-link'", "class='comment-reply-link btn btn-mini'", $link);
+}
+add_filter('comment_reply_link', 'origine_reply_link', 420, 4);
 
 
 function origines_get_avatar($email, $size) {

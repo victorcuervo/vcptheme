@@ -23,8 +23,6 @@ $category_id = $category->term_id;
 ?>
 
 <div id="cuerpo" class="container">
-	<div class="row">
-		
 
 			<?php if ( have_posts() ) : ?>
 
@@ -32,7 +30,7 @@ $category_id = $category->term_id;
 				<div class="headline">
 				<h1 class="archive-title"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1>
 				</div>
-				
+
 				<?php
 
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
@@ -48,19 +46,19 @@ $category_id = $category->term_id;
 			</header><!-- .archive-header -->
 
 
-		
-			
+
+
 			<?php
-					
-				
+
+
 				// Pintamos las categorías dado un nombre de categoria y su id
-				printf ('%s', vcp_categories($category_name,$category_id));	
-				
+				printf ('%s', vcp_categories($category_name,$category_id));
+
 				// Pintamos las tags dado un título
 				printf ('%s', vcp_tags($category_name));
-				
-				
-				
+
+
+
 			?>
 
 
@@ -70,7 +68,7 @@ $category_id = $category->term_id;
 		</div>
 
 
-		
+
 			<div id="lastArticles" class="row">
 
 		<?php
@@ -89,16 +87,16 @@ $category_id = $category->term_id;
 			$the_excerpt = '<p>' . $the_excerpt . '</p>';
 			return $the_excerpt;
 		}
-		
-		
+
+
 
 		$recent_posts = wp_get_recent_posts(array('category' => $category->term_id, 'numberposts' => '6', 'post_status' => 'publish'));
 		$x = 0;
 		foreach( $recent_posts as $recent ){
-			
+
 
 			?>
-			
+
 
 
 			<div class="col-md-4 col-sm-6">
@@ -110,7 +108,7 @@ $category_id = $category->term_id;
 				  </a>
 				  <div class="media-body">
 				    <h4 class="media-heading"><?php echo '<a href="' . get_permalink($recent["ID"]) . '" title="'.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a>'?></h4>
-					    
+
 					    <?php echo get_excerpt_by_id2($recent["ID"]); ?>
 
 			      </div>
@@ -120,9 +118,9 @@ $category_id = $category->term_id;
 			?>
 
 				</div> <!-- #FIN DE ROW -->
-		
 
-			
+
+
 			<div class="row">
 				<div class="col-md-6">
 					<?php dynamic_sidebar( 'adspost' ); ?>
@@ -136,13 +134,13 @@ $category_id = $category->term_id;
 			<h2>Artículos <?php echo single_cat_title( '', false )?></h2>
 			</div>
 
-			
+
 				<?php
 
 
 				$args = array( 'posts_per_page' => 500, 'offset'=> 0, 'category' => $category->term_id );
 				$myposts = get_posts( $args );
-				
+
 
 				$numpost = ceil(sizeof($myposts)/3);
 				$x=0;
@@ -150,10 +148,10 @@ $category_id = $category->term_id;
 
 				$html = '<div class="row"><div class="col-md-4 col-sm-6">';
 
-				
+
 				foreach ( $myposts as $post ) {
 
-				
+
 
 					if ($x==$numpost) {
 						$html .= '</div><div class="col-md-4 col-sm-6">';
@@ -161,18 +159,18 @@ $category_id = $category->term_id;
 					}
 
 					$html = $html.'<span class="genericon genericon-document"></span><a href="'.get_permalink($post->post_id).'">'.$post->post_title.'</a><br/>';
-					
 
-					
+
+
 					$x++;
-					
+
 				}
 				//
 				$html .= "</div></div>";
 				echo $html;
 				?>
 
-				
+
 
 
 
@@ -199,8 +197,7 @@ $category_id = $category->term_id;
 
 				endif;
 			?>
-	
-	</div><!-- #Fin Cuerpo-->
+
 </div><!-- #Fin Contenido Principal -->
 
 <?php

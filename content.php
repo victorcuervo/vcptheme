@@ -18,17 +18,17 @@
 
 <!-- CONTENIDO PRINCIPAL -->
 <div id="content" class="col-md-9">
-	
+
 	<header>
 
-		<div class="headline">	
+		<div class="headline">
 		<?php
 			if ( is_single() ) :
 				the_title( '<h2>', '</h2>' );
 			else :
 				the_title( '<h2>', '</h2>' );
 			endif;
-			
+
 			//the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		?>
 		</div>
@@ -52,14 +52,14 @@
 					echo trim($output, $separator);
 					}?>
 			</span>
-			
+
 			<!-- TAGS -->
 			<span class="genericon genericon-tag"></span>
 			<?php the_tags( '<span>', ', ', '</span>' ); ?>
 
 
 			<!-- COMENTARIOS -->
-			
+
 			<?php
 				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 			?>
@@ -68,11 +68,11 @@
 			<?php
 				endif;
 			?>
-			
-	
+
+
 		</div>
 
-		
+
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : ?>
@@ -85,19 +85,19 @@
 
 		<!-- PONEMOS EL THUMBNAIL -->
 		<div>
-		
-			<?php 
+
+			<?php
 				$sitiothumb =  get_option('vcp_thumbnail');
-				
+
 				if ($sitiothumb == 'center')
-					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive"));
+					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
 				else if ($sitiothumb == 'left')
 					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
 				else
 					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
-			?>		
+			?>
 		</div>
-				
+
 			<?php
 				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
 
@@ -118,7 +118,7 @@
 	// Si hay ejemplos relacionados los publicamos
 	// Sobre todo para Manual Web
 	echo vcp_post_ejemplos();
-	
+
 	// Soporte para el plugin WP Related Posts
 	if (function_exists(wp_related_posts))
 		wp_related_posts();
@@ -126,18 +126,18 @@
 	// Volcamos los vídeos
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
-	
-	if ($video[0]) { 			
+
+	if ($video[0]) {
 		echo '<div class="headline"><h3>Vídeos sobre '.$nombre[0].'</h3></div><div>';
 		//$shortcode = '[ypt playlist_id='.$video[0].']';
 		//echo apply_filters('the_content', $shortcode);
 		echo '<script src="https://apis.google.com/js/platform.js"></script>';
 		echo '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
-		
+
 		// Por el código metido en línea de código
 		$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$video[0]);
-		
-		echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';				
+
+		echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
 		echo '</div>';
 	}
 
@@ -149,8 +149,8 @@
 		dd_twitter_generate('Normal','twitter_username');
 		echo '</div>';
 	}
-	
-		
+
+
 	if (function_exists('dd_fbshare_generate')) {
 		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
 		dd_fbshare_generate('Normal');
@@ -176,14 +176,14 @@
 
 <?php dynamic_sidebar( 'adspost' ); ?>
 
-<?php 
+<?php
 
 if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					}
 
 // Para editar el Post
-edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' ); 
+edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
 ?>
 
 
@@ -193,7 +193,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 <!-- Sidebar -->
 <div id="sidebar" class="col-md-3">
 
-		
+
 		<div id="author">
 			<div class="headline"><h3><?php the_author_meta('first_name'); echo ' '; the_author_meta('last_name') ?> </h3></div>
 			<div class="img-thumbnail pull-right">
@@ -219,7 +219,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 				<?php if (get_the_author_meta('googleplus')):?>
 					<a href="<?php the_author_meta('googleplus');?>?rel=author" target="_blank"><span class="genericon genericon-googleplus"></span></a>
 				<? endif; ?>
-				
+
 			</div>
 		</div>
 
@@ -227,9 +227,9 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 
 		<?php dynamic_sidebar( 'sidebarlateral' ); ?>
 
-		
+
 		<?php vcp_informacion_articulo(); ?>
-		
+
 
 		<div class="headline"><h3><?php echo get_option('vcp_categorias');?></h3></div>
 
@@ -250,16 +250,16 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 					if ($x==$mitad) echo "</div><div class='col-md-6 col-sm-6'>";
 					$x++;
 				}
-				
-				
+
+
 			?>
 			</div>
 
 		</div>
-			
 
-    
-     
+
+
+
 
 
 

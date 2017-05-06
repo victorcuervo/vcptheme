@@ -2,10 +2,10 @@
 /**
  * Plantilla para las páginas 404 (Not Found)
  *
- * @package VCP
- * @subpackage VCP_v2
- * @since Twenty Fourteen 1.0
- */
+ * @package vcptheme
+ * @version 1.0
+ * @since vcptheme 1.0
+*/
 
 get_header(); ?>
 
@@ -16,17 +16,17 @@ get_header(); ?>
 		<div class="headline">
 			<h2>Ups! <small>Parece que no encontramos lo que buscas...</small></h2>
 		</div>
-		
-		<p>Navega por nuestras <strong><?php echo get_option('vcp_categorias');?></strong> a ver si hay suerte.</p>
-		
 
-			<div class="row">
+		<p>Navega por nuestras <strong><?php echo get_option('vcp_categorias');?></strong> a ver si hay suerte.</p>
+
+
+		<div class="row">
 			<div class="col-md-3">
-			<?php
+				<?php
 				$args = array(
-				  'orderby' => 'name',
-				  'parent' => 0
-				  );
+					'orderby' => 'name',
+					'parent' => 0
+				);
 				$categories = get_categories( $args );
 
 				$cuarto = floor(sizeof($categories)/3);
@@ -38,14 +38,14 @@ get_header(); ?>
 						echo "</div><div class='col-md-3'>";
 						$x=0;
 					} else
-						$x++;
+					$x++;
 				}
-			?>
+				?>
 			</div>
 
-			</div>
+		</div>
 
-	
+
 	</div><!-- #Fin Cuerpo-->
 </div><!-- #Fin Contenido Principal -->
 

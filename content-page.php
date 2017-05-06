@@ -18,18 +18,18 @@
 
 <!-- CONTENIDO PRINCIPAL -->
 <div id="content" class="col-md-9">
-	
 
-	
+
+
 
 	<header>
 
-		<div class="headline">	
+		<div class="headline">
 		<?php
 			if ( is_single() ) :
 				the_title( '<h2>', '</h2>' );
 			else :
-				the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2>', '</h2>' );
 			endif;
 		?>
 		</div>
@@ -42,7 +42,7 @@
 
 
 			<!-- COMENTARIOS -->
-			
+
 			<?php
 				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 			?>
@@ -51,11 +51,11 @@
 			<?php
 				endif;
 			?>
-			
-	
+
+
 		</div>
 
-		
+
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : ?>
@@ -71,7 +71,7 @@
 		<?php the_post_thumbnail(); ?>
 	</div>
 
-	
+
 			<?php
 				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
 
@@ -96,8 +96,8 @@
 	// Volcamos los vídeos
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
-	
-	if ($video[0]) { 
+
+	if ($video[0]) {
 		$shortcode = '[tubepress mode="playlist" playlistValue="'.$video[0].'"]';
 		echo '<h3>Vídeos sobre '.$nombre[0].'</h3><div>';
 		echo apply_filters('the_content', $shortcode);
@@ -113,7 +113,7 @@
 		dd_twitter_generate('Normal','twitter_username');
 		echo '</div>';
 	}
-	
+
 	if (function_exists('dd_fblike_generate')) {
 		echo '<div class="col-md-1 col-sm-1 col-xs-1">';
 		 dd_fblike_generate('Like Box Count');
@@ -138,15 +138,15 @@
 
 <?php dynamic_sidebar( 'adspost' ); ?>
 
-<?php 
+<?php
 
 if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					}
 
 // Para editar el Post
-edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' ); 
-					?>
+edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
+?>
 
 </div><!-- #FIN DE LA COLUMNA -->
 
@@ -154,7 +154,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 <!-- Sidebar -->
 <div id="sidebar" class="col-md-3">
 
-		
+
 		<div id="author">
 			<div class="headline"><h3><?php the_author_meta('first_name'); echo ' '; the_author_meta('last_name') ?> </h3></div>
 			<div class="img-thumbnail pull-right">
@@ -180,7 +180,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 				<?php if (get_the_author_meta('googleplus')):?>
 					<a href="<?php the_author_meta('googleplus');?>?rel=author" target="_blank"><span class="genericon genericon-googleplus"></span></a>
 				<? endif; ?>
-				
+
 			</div>
 		</div>
 
@@ -188,7 +188,7 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 
 
 		<?php vcp_informacion_articulo(); ?>
-		
+
 
 		<div class="headline"><h3><?php echo get_option('vcp_categorias');?></h3></div>
 
@@ -213,10 +213,10 @@ edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</s
 			</div>
 
 		</div>
-			
 
-    
-     
+
+
+
 
 
 

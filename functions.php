@@ -60,7 +60,7 @@ function twentyfourteen_setup() {
 
 
 	// This theme uses wp_nav_menu() in two locations.
-	
+
 	// REGISTRAMOS LOS DOS MENÚS QUE VAMOS A UTILIZAR
 	register_nav_menus( array(
 		'primary'   => __( 'Menú Superior', 'twentyfourteen' ),
@@ -95,7 +95,7 @@ function twentyfourteen_setup() {
 
 
 
-	
+
 
 
 
@@ -286,14 +286,14 @@ add_action( 'widgets_init', 'vcp_widgets_init' );
  * @return void
  */
 function vcp_scripts() {
-	
+
 	// METEMOS BOOTSRAP
-	
+
 	wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.1.1' );
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.1.1',true);
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.0.2' );
-	
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+
 	if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
 		wp_enqueue_script( 'comment-reply' );
 
@@ -544,7 +544,7 @@ add_filter( 'wp_title', 'twentyfourteen_wp_title', 10, 2 );
 
 
 function my_new_contactmethods( $contactmethods ) {
-  
+
     $contactmethods['twitter'] = 'Twitter';
     $contactmethods['facebook'] = 'Facebook';
     $contactmethods['youtube'] = 'YouTube';
@@ -569,8 +569,8 @@ function vcp_get_rss($nombre, $url, $numeroitems) {
 	$rss = fetch_feed( $url);
 
 	if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
-    	// Figure out how many total items there are, but limit it to 5. 
-    	$maxitems = $rss->get_item_quantity( $numeroitems ); 
+    	// Figure out how many total items there are, but limit it to 5.
+    	$maxitems = $rss->get_item_quantity( $numeroitems );
 
     	// Build an array of all the items, starting with element 0 (first element).
     	$rss_items = $rss->get_items( 0, $maxitems );
@@ -578,7 +578,7 @@ function vcp_get_rss($nombre, $url, $numeroitems) {
 	endif;
 
 	$html.=  '<ul>';
-	if ( $maxitems != 0 ) : 
+	if ( $maxitems != 0 ) :
         foreach ( $rss_items as $item ) :
             $html.=  '<li><a href="';
             $html.=  esc_url( $item->get_permalink() ).'"';
@@ -604,7 +604,7 @@ function vcp_post_ejemplos() {
 	$ejemplos = get_post_custom_values('urlejemplos');
 
 	 $html = '';
-	
+
 	if ($ejemplos[0])
 		 $html .= vcp_get_rss($nombre[0], $ejemplos[0], 10);
 
@@ -615,7 +615,7 @@ function vcp_post_ejemplos() {
 /* Función que devuelve la información de descarga, manual, test,... del artículo */
 
 function vcp_informacion_articulo() {
-	
+
 
 	 			$nombre = get_post_custom_values('nombreforo');
 	 			$descargar = get_post_custom_values('descargar');
@@ -628,7 +628,7 @@ function vcp_informacion_articulo() {
 	 			$urlcurso = get_post_custom_values('urlcurso');
 
 	 			$html = '';
-	 			
+
 				if ($visualizar[0]) {
 	 				$html = '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
@@ -636,7 +636,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($descargar[0]) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
@@ -645,7 +645,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$descargar[0].'">Descargar Código Fuente</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($errorcodigo[0]) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
@@ -654,7 +654,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código Fuente</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($nombre[0] && $urlforo[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
@@ -663,7 +663,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Foro de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($nombre[0] && $urlmanual[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
@@ -672,7 +672,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$urlmanual[0].'">Manual de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($nombre[0] && $urltest[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
@@ -681,7 +681,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 	 			if ($nombre[0] && $urlcharla[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
@@ -690,7 +690,7 @@ function vcp_informacion_articulo() {
 	 				$html .= '<p class="text-center"><a href="'.$urlcharla[0].'">Charla sobre '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
-	 			
+
 
 				if ($nombre[0] && $urlcurso[0]) {
 					$html .= '<div class="col-sm-6 col-md-6">';
@@ -710,8 +710,8 @@ function vcp_informacion_articulo() {
 
  				if ($html!='')
  					echo $cabecera.$html.$pie;
-	 	
-	 	
+
+
 }
 
 
@@ -728,15 +728,15 @@ function vcp_volver($slug) {
  *  google-calendar-eventos-repetitivos
  *  la categiría es google calendar
  *  si google-calendar-eventos es una categoria uso el CATEGORY
- *  si no uso el TAG 				
- */	
+ *  si no uso el TAG
+ */
 
 	// Quitamos el último término
 	$slug_a_buscar = substr($slug,0,strrpos($slug,'-'));
-	
+
 	// Validamos si es una categoría
 	$categoria = get_category_by_slug( $slug_a_buscar );
-	
+
 	if (empty($categoria)) {
 		// Si no es una categoría lo buscamos como tag
 		$etiqueta = get_term_by('slug',$slug_a_buscar,'post_tag');
@@ -761,38 +761,38 @@ function vcp_tags($nombre) {
 
 	// Buscamos tags con el nombre y un espacio
 	$tags = get_tags(array('name__like'=>$nombre.' '));
-	
+
 	$html = '';
 
 
 	if (sizeof($tags)>0) {
 
-		$html = '<div class="headline"><h2>Elementos de '.$nombre.'</h2></div>';			
+		$html = '<div class="headline"><h2>Elementos de '.$nombre.'</h2></div>';
 		$html .= '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
-		
+
 		$numtags = ceil(sizeof($tags)/4);
-		
+
 		$x=0;
-		
+
 		foreach ( $tags as $tag ) {
-			
+
 			$tag_link = get_tag_link( $tag->term_id );
-		
+
 			if($x==$numtags) {
 				$html .= '</div><div class="col-md-3 col-sm-6 col-xs-6">';
 				$x=0;
 			}
-		
+
 			$html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
 			$html .= "{$tag->name}</a><br/>";
 			$x++;
 		}
-		
+
 		$html .= '</div></div>';
-		
+
 
 	}
-	
+
 	return $html;
 
 
@@ -813,24 +813,24 @@ function vcp_categories($nombre,$id) {
 
 		$html = '<div class="headline"><h2>Categorías de '.$nombre.'</h2></div>';
 		$html .= '<div class="row"><div class="col-md-3 col-sm-6 col-xs-6">';
-		
+
 		$numcategs = ceil(sizeof($categorias)/4);
-		
+
 		$x=0;
-		
+
 		foreach ( $categorias as $categoria ) {
-				
+
 			$categoria_link = get_category_link($categoria->term_id);
-		
+
 			if($x==$numcategs) {
 				$html .= '</div><div class="col-md-3 col-sm-6 col-xs-6">';
 				$x=0;
 			}
-		
+
 			$html .= "<a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>{$categoria->name}</a><br/>";
 			$x++;
 		}
-		
+
 		$html .= '</div></div>';
 
 
@@ -869,3 +869,11 @@ require get_template_directory() . '/inc/customizer.php';
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	//require get_template_directory() . '/inc/featured-content.php';
 }
+/*** Remove Query String from Static Resources ***/
+function remove_cssjs_ver( $src ) {
+ if( strpos( $src, '?ver=' ) )
+ $src = remove_query_arg( 'ver', $src );
+ return $src;
+}
+add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
+add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );

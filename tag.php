@@ -23,12 +23,9 @@ $tag_slug = $tag->slug;
 ?>
 
 <div id="cuerpo" class="container">
-	<div class="row">
-		
 
-			<?php if ( have_posts() ) : 
 
-				
+			<?php if ( have_posts() ) :
 
 
 			?>
@@ -38,18 +35,18 @@ $tag_slug = $tag->slug;
 
 				<?php
 
-				
-				
-				
-				
+
+
+
+
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
 					/* HAY QUE VALIDAR QUE TIENE URL, SI NO NO METO LA IMAGEN */
 					if (function_exists('z_taxonomy_image_url'))
 						echo '<img src="'.z_taxonomy_image_url($tag->term_id).'" class="pull-right" alt="'.single_tag_title( '', false ).'"/>';
 
-					
-					
-					
+
+
+
 					// Show an optional term description.
 					$term_description = term_description();
 					if ( ! empty( $term_description ) ) :
@@ -59,10 +56,10 @@ $tag_slug = $tag->slug;
 			</header><!-- .archive-header -->
 
 			<?php
-			
+
 				// Ponemos la información de volver.
 				printf ('%s', vcp_volver($tag_slug));
-				
+
 				// Pintamos las tags dado un título
 				printf ('%s', vcp_tags($tag_name));
 
@@ -93,15 +90,16 @@ $tag_slug = $tag->slug;
 			$the_excerpt = '<p>' . $the_excerpt . '</p>';
 			return $the_excerpt;
 		}
-	
+
 
 		$recent_posts = wp_get_recent_posts(array('tag' => $tag->slug, 'numberposts' => '6', 'post_status' => 'publish'));
+		$x = 0;
 		foreach( $recent_posts as $recent ){
-			
-		
+
+
 
 			?>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-6">
 			<div class="media">
 				 <a class="pull-left" href="<?php echo get_permalink($recent["ID"])?>">
 				    <div class="img-thumbnail">
@@ -110,7 +108,7 @@ $tag_slug = $tag->slug;
 				  </a>
 				  <div class="media-body">
 				    <h4 class="media-heading"><?php echo '<a href="' . get_permalink($recent["ID"]) . '" title="'.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a>'?></h4>
-					    
+
 					    <?php echo get_excerpt_by_id2($recent["ID"]); ?>
 
 			      </div>
@@ -122,20 +120,19 @@ $tag_slug = $tag->slug;
 				</div> <!-- #FIN DE ROW -->
 
 
-
 			<div class="headline">
 			<h2>Artículos <?php echo single_tag_title( '', false )?></h2>
 			</div>
 
-			
+
 				<?php
 
-	
+
 
 				$args = array( 'posts_per_page' => 500, 'offset'=> 0, 'tag' => $tag->slug) ;
-				
+
 				$myposts = get_posts ( $args );
-				
+
 
 				$numpost = ceil(sizeof($myposts)/3);
 				$x=0;
@@ -143,10 +140,10 @@ $tag_slug = $tag->slug;
 
 				$html = '<div class="row"><div class="col-md-4">';
 
-				
+
 				foreach ( $myposts as $post ) {
 
-				
+
 
 					if (($x==$numpost) && ($numpost>0)) {
 						$html .= '</div><div class="col-md-4">';
@@ -154,46 +151,29 @@ $tag_slug = $tag->slug;
 					}
 
 					$html = $html.'<span class="genericon genericon-document"></span><a href="'.get_permalink($post->post_id).'">'.$post->post_title.'</a><br/>';
-					
 
-					
+
+
 					$x++;
-					
+
 				}
 				//
 				$html .= "</div></div>";
 				echo $html;
 				?>
 
-				
+
 
 
 
 			<?php
 
-			/*
-					// Start the Loop.
-					while ( have_posts() ) :
 
-						the_post();
-						get_template_part( 'content', get_post_format() );
-
-					endwhile;
-					// Previous/next page navigation.
-					twentyfourteen_paging_nav();
-
-				else :
-					// If no content, include the "No posts found" template.
-					get_template_part( 'content', 'none' );
-
-				endif;
-
-				*/
 
 				endif;
 			?>
-	
-	</div><!-- #Fin Cuerpo-->
+
+
 </div><!-- #Fin Contenido Principal -->
 
 <?php

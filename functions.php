@@ -842,7 +842,6 @@ function vcp_categories($nombre,$id) {
 
 
 function vcp_thumbnail() {
-
 	/* Función que gestiona como se mostrará el thumbnail de las páginas y
 		post, si est centrado o a la izquierda */
 
@@ -857,6 +856,20 @@ function vcp_thumbnail() {
 			$html = the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
 
 			return $html;
+}
+
+function vcp_video($codigo,$nombre) {
+
+	// En algunos casos no solo hay código, por lo que hay que eliminar el texto
+	$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$codigo);
+
+	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div><div>';
+	$html .= '<script src="https://apis.google.com/js/platform.js"></script>';
+	$html .= '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
+	$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
+	$html .= '</div>';
+
+	return $html;
 
 }
 

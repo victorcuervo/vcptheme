@@ -119,9 +119,22 @@ h2, h3 {
 	height: 150px;
 }
 
-/* Para template con Editorial */
+/* Para template con Editorial
 #templateEditorial #lastArticles .media:first-child {
 	margin-bottom:20px;
+}
+*/
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
 }
 
 #templateEditorial h3 {

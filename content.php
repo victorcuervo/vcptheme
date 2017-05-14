@@ -131,37 +131,6 @@
 		echo vcp_video($video[0],$nombre[0]);
 	}
 
-	echo '<div class="headline"><h3>Difunde el Conocimiento</h3></div>';
-	echo '<p>Si <strong>te ha gustado el artículo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
-	echo '<div class="row">';
-	if (function_exists('dd_twitter_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
-		dd_twitter_generate('Normal','twitter_username');
-		echo '</div>';
-	}
-
-
-	if (function_exists('dd_fbshare_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
-		dd_fbshare_generate('Normal');
-		echo '</div>';
-	}
-
-
-	if (function_exists('dd_google1_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
-		dd_google1_generate('Normal');
-		echo '</div>';
-	}
-
-	if (function_exists('dd_linkedin_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-2">';
-		dd_linkedin_generate('Normal');
-		echo '</div>';
-	}
-
-	echo '</div>';
-
  ?>
 
 <?php dynamic_sidebar( 'adspost' ); ?>

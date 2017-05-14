@@ -56,10 +56,19 @@
 	<?php else : ?>
 	<div class="entry-content">
 
-
 	<!-- PONEMOS EL THUMBNAIL -->
-	<div class="pull-right">
-		<?php the_post_thumbnail(); ?>
+	<div>
+
+		<?php
+			$sitiothumb =  get_option('vcp_thumbnail');
+
+			if ($sitiothumb == 'center')
+				the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
+			else if ($sitiothumb == 'left')
+				the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
+			else
+				the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
+		?>
 	</div>
 
 

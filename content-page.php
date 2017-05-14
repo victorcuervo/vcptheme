@@ -19,19 +19,10 @@
 <!-- CONTENIDO PRINCIPAL -->
 <div id="content" class="col-md-9">
 
-
-
-
 	<header>
 
 		<div class="headline">
-		<?php
-			if ( is_single() ) :
-				the_title( '<h2>', '</h2>' );
-			else :
-				the_title( '<h2>', '</h2>' );
-			endif;
-		?>
+			<?php the_title( '<h2>', '</h2>' ); ?>
 		</div>
 
 		<div id="post-info">

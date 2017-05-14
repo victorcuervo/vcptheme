@@ -114,10 +114,11 @@ h2, h3 {
 	display: inline-block;
 }
 
-/* Para los últimos artículos */
+/* Para los últimos artículos
 #lastArticles .media:first-child {
 	height: 150px;
 }
+*/
 
 /* Para template con Editorial
 #templateEditorial #lastArticles .media:first-child {
@@ -128,7 +129,7 @@ h2, h3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display:         flex;
+  display: flex;
 }
 
 #templateEditorial h3 {

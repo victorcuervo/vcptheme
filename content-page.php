@@ -88,9 +88,14 @@
 	$video = get_post_custom_values('urlvideo');
 
 	if ($video[0]) {
-		$shortcode = '[tubepress mode="playlist" playlistValue="'.$video[0].'"]';
-		echo '<h3>Vídeos sobre '.$nombre[0].'</h3><div>';
-		echo apply_filters('the_content', $shortcode);
+		echo '<div class="headline"><h3>Vídeos sobre '.$nombre[0].'</h3></div><div>';
+		echo '<script src="https://apis.google.com/js/platform.js"></script>';
+		echo '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
+
+		// Por el código metido en línea de código
+		$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$video[0]);
+
+		echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
 		echo '</div>';
 	}
 

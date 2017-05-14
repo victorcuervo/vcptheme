@@ -125,18 +125,6 @@ h2, h3 {
 }
 */
 
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
-}
-.row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
-}
-
 #templateEditorial h3 {
 	margin-bottom: 5px;
 	border-bottom: none;

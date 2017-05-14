@@ -88,7 +88,7 @@
 	$video = get_post_custom_values('urlvideo');
 
 	if ($video[0]) {
-		vcp_video($video[0],$nombre);
+		vcp_video($video[0],$nombre[0]);
 	}
 
 

@@ -121,7 +121,7 @@ h2, h3 {
 
 /* Para template con Editorial */
 #templateEditorial #lastArticles .media:first-child {
-	height: 200px;
+	margin-bottom:20px;
 }
 
 #templateEditorial h3 {

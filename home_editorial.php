@@ -44,7 +44,7 @@ get_header(); ?>
 		</div>
 
 		<div class="container-fluid">
-			<div id="lastArticles" class="row">
+			<div id="lastArticles" class="row row-eq-height">
 
 			<?php
 
@@ -84,9 +84,7 @@ get_header(); ?>
 
 						      </div>
 						</div></div>
-			<?php
-				}
-				?>
+			<?php } ?>
 
 				</div> <!-- #FIN DE ROW -->
 			</div>

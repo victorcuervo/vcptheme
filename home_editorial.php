@@ -43,7 +43,8 @@ get_header(); ?>
 			<h2>Últimos Artículos</h2>
 		</div>
 
-		<div id="lastArticles" class="row">
+		<div class="container-fluid">
+			<div id="lastArticles" class="row">
 
 			<?php
 
@@ -88,6 +89,7 @@ get_header(); ?>
 				?>
 
 				</div> <!-- #FIN DE ROW -->
+			</div>
 
 
 

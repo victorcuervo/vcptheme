@@ -1,17 +1,12 @@
 <?php
-/**
- * The default template for displaying content
+ /**
+ * Se muestra el contenido de una página
  *
- * Used for both single and index/archive/search.
- *
- * @package VCP
- * @subpackage VCP 2
- * @since VCP 2
+ * @package vcptheme
+ * @version 1.0
+ * @since vcptheme 1.0
  */
 ?>
-
-
-
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -90,36 +85,6 @@
 	if ($video[0]) {
 		echo vcp_video($video[0],$nombre[0]);
 	}
-
-
-	echo '<h3>Comparteme...</h3>';
-	echo '<p>Si <strong>te ha gustado el artículo o te ha sido de utilidad</strong>, no dejes de compartirlo con tus amigos en las <strong>redes sociales</strong>... Te estaremos muy agradecidos. :-D</p>';
-	echo '<div class="row">';
-	if (function_exists('dd_twitter_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-1">';
-		dd_twitter_generate('Normal','twitter_username');
-		echo '</div>';
-	}
-
-	if (function_exists('dd_fblike_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-1">';
-		 dd_fblike_generate('Like Box Count');
-		echo '</div>';
-	}
-
-	if (function_exists('dd_google1_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-1">';
-		dd_google1_generate('Normal');
-		echo '</div>';
-	}
-
-	if (function_exists('dd_linkedin_generate')) {
-		echo '<div class="col-md-1 col-sm-1 col-xs-1">';
-		dd_linkedin_generate('Normal');
-		echo '</div>';
-	}
-
-	echo '</div>';
 
  ?>
 

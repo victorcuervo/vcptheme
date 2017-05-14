@@ -841,6 +841,24 @@ function vcp_categories($nombre,$id) {
 }
 
 
+function vcp_thumbnail() {
+
+	/* Función que gestiona como se mostrará el thumbnail de las páginas y
+		post, si est centrado o a la izquierda */
+
+		$sitiothumb =  get_option('vcp_thumbnail');
+		$html = '';
+
+		if ($sitiothumb == 'center')
+			$html = the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
+		else if ($sitiothumb == 'left')
+			$html = the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
+		else
+			$html = the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
+
+			return $html;
+
+}
 
 
 

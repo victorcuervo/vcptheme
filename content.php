@@ -83,32 +83,22 @@
 	<div class="entry-content">
 
 
-		<!-- PONEMOS EL THUMBNAIL -->
+		<!-- Thumbnail -->
 		<div>
-
-			<?php
-				$sitiothumb =  get_option('vcp_thumbnail');
-
-				if ($sitiothumb == 'center')
-					the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
-				else if ($sitiothumb == 'left')
-					the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
-				else
-					the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
-			?>
+			<?php vcp_thumbnail() ?>
 		</div>
 
-			<?php
-				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
+		<?php
+			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
 
 
-				wp_link_pages( array(
-					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
-					'after'       => '</div>',
-					'link_before' => '<span>',
-					'link_after'  => '</span>',
-				) );
-			?>
+			wp_link_pages( array(
+				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+			) );
+		?>
 
 	</div><!-- .entry-content -->
 	<?php endif; ?>

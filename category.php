@@ -20,7 +20,7 @@ $category_id = $category->term_id;
 
 ?>
 
-<div id="cuerpo" class="container-fluid">
+<div id="cuerpo" class="container">
 
 	<?php if ( have_posts() ) : ?>
 

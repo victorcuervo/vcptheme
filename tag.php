@@ -70,7 +70,7 @@ $tag_slug = $tag->slug;
 		<div class="headline">
 			<h2>Últimos Artículos en <?php echo single_tag_title( '', false )?></h2>
 		</div>
-			<div class="row">
+			<div class="row row-eq-height">
 
 		<?php
 

@@ -13,9 +13,9 @@ Some useful links:
 
 * Use of flexbox pattern to display elements
 * Remove Digg Digg Plugin dependency
-* Bug #: Thumbnail in Pages
-* Bug #: Social Elements in Footer
-
+* Bug #5: Thumbnail in Pages
+* Bug #4: Display video in pages
+* Bug #2: Social Elements in Footer use of Social Widget
 
 ## 1.0.1
 *2017-05-06 02:30*

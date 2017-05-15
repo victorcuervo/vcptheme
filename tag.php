@@ -22,7 +22,7 @@ $tag_slug = $tag->slug;
 
 ?>
 
-<div id="cuerpo" class="container">
+<div id="cuerpo" class="container-fluid">
 
 
 			<?php if ( have_posts() ) :

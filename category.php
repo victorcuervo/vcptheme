@@ -20,7 +20,7 @@ $category_id = $category->term_id;
 
 ?>
 
-<div id="cuerpo" class="container">
+<div id="cuerpo" class="container-fluid">
 
 	<?php if ( have_posts() ) : ?>
 
@@ -107,8 +107,6 @@ $category_id = $category->term_id;
 				?>
 
 			</div> <!-- #FIN DE ROW -->
-
-
 
 			<div class="row">
 				<div class="col-md-6">

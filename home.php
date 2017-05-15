@@ -10,7 +10,7 @@
 
 get_header(); ?>
 
-<div id="cuerpo" class="container">
+<div id="cuerpo" class="container-fluid">
 
 
 

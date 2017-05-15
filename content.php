@@ -1,17 +1,13 @@
 <?php
-/**
- * The default template for displaying content
+ /**
+ * Se muestra el contenido de un post
  *
- * Used for both single and index/archive/search.
- *
- * @package VCP
- * @subpackage VCP 2
- * @since VCP 2
+ * @package vcptheme
+ * @version 1.0
+ * @since vcptheme 1.0
  */
-
-
-
 ?>
+
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 

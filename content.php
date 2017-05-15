@@ -8,11 +8,9 @@
  */
 ?>
 
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-
-<!-- CONTENIDO PRINCIPAL -->
+<!-- Main Content -->
 <div id="content" class="col-md-9">
 
 	<header>

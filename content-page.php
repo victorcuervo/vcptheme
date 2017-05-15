@@ -77,7 +77,7 @@
 	// Si hay ejemplos relacionados los publicamos
 	echo vcp_post_ejemplos();
 
-	// Volcamos los vídeos
+	// Video Display
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
 

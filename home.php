@@ -20,7 +20,7 @@ get_header(); ?>
 		<div class="headline">
 			<h2>Últimos Artículos</h2>
 		</div>
-			<div id="lastArticles" class="row">
+			<div id="lastArticles" class="row row-eq-height">
 
 		<?php
 

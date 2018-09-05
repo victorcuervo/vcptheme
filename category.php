@@ -31,10 +31,19 @@ $category_id = $category->term_id;
 
 			<?php
 
+			$sitiothumb =  get_option('vcp_thumbnail');
+			$clase = '';
+			if ($sitiothumb == 'center')
+				$clase = 'center-block img-responsive img-cabecera';
+			else if ($sitiothumb == 'left')
+				$clase = 'pull-left img-responsive thumb';
+			else
+				$clase = 'pull-right img-responsive thumb';
+
 			// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
 			if (function_exists('z_taxonomy_image_url'))
-			echo '<div class="pull-right"><img src="'.z_taxonomy_image_url().'" alt="'.single_cat_title( '', false ).'"/></div>';
-
+			echo '<div class="'.$clase.'"><img src="'.z_taxonomy_image_url().'" alt="'.single_cat_title( '', false ).'"/></div>';				
+			
 			// Show an optional term description.
 			$term_description = term_description();
 			if ( ! empty( $term_description ) ) :

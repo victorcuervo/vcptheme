@@ -111,7 +111,7 @@
 	$nombre = get_post_custom_values('nombreforo');
 	$video = get_post_custom_values('urlvideo');
 
-	if ($video[0]) {
+	if (isset($video[0])) {
 		echo vcp_video($video[0],$nombre[0]);
 	}
 

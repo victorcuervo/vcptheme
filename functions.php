@@ -629,7 +629,7 @@ function vcp_informacion_articulo() {
 
 	 			$html = '';
 
-				if ($visualizar[0]) {
+				if (isset($visualizar[0])) {
 	 				$html = '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/visualizar.png" alt="Visualizar Ejemplo"/></a>';
@@ -638,7 +638,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($descargar[0]) {
+	 			if (isset($descargar[0])) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$descargar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/download.png" alt="Descargar Ejemplo"/></a>';
@@ -647,7 +647,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($errorcodigo[0]) {
+	 			if (isset($errorcodigo[0])) {
 	 				$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$errorcodigo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/error.png" alt="Reportar Error"/></a>';
@@ -656,7 +656,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($nombre[0] && $urlforo[0]) {
+	 			if (isset($nombre[0]) && isset($urlforo[0])) {
 					$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$urlforo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/question.png" alt="Foro para Dudas '.$nombre[0].'"/></a>';
@@ -665,7 +665,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($nombre[0] && $urlmanual[0]) {
+	 			if (isset($nombre[0]) && isset($urlmanual[0])) {
 					$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$urlmanual[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/manual.png" alt="Manual sobre '.$nombre[0].'"/></a>';
@@ -674,7 +674,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($nombre[0] && $urltest[0]) {
+	 			if (isset($nombre[0]) && isset($urltest[0])) {
 					$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$urltest[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/test.png" alt="Test de '.$nombre[0].'"/></a>';
@@ -683,7 +683,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-	 			if ($nombre[0] && $urlcharla[0]) {
+	 			if (isset($nombre[0]) && isset($urlcharla[0])) {
 					$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$urlcharla[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/talk.png" alt="Charla sobre '.$nombre[0].'"/></a>';
@@ -692,7 +692,7 @@ function vcp_informacion_articulo() {
 	 			}
 
 
-				if ($nombre[0] && $urlcurso[0]) {
+				if (isset($nombre[0]) && isset($urlcurso[0])) {
 					$html .= '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$urlcurso[0].'" target="_blank">';;
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/curso.png" alt="Curso de '.$nombre[0].'"/></a>';

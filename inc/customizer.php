@@ -101,30 +101,6 @@ function twentyfourteen_customize_register( $wp_customize ) {
     ));
 
 
-
-/*
-
-
-	// Add the featured content layout setting and control.
-	$wp_customize->add_setting( 'featured_content_layout', array(
-		'default'           => 'grid',
-		'sanitize_callback' => 'twentyfourteen_sanitize_layout',
-	) );
-
-	$wp_customize->add_control( 'featured_content_layout', array(
-		'label'   => __( 'Copyright', 'twentyfourteen' ),
-		'section' => 'featured_content',
-		'type'    => 'select',
-		'choices' => array(
-			'grid'   => __( 'Grid',   'twentyfourteen' ),
-			'slider' => __( 'Slider', 'twentyfourteen' ),
-		),
-	) );
-
-*/
-
-
-
 }
 add_action( 'customize_register', 'twentyfourteen_customize_register' );
 

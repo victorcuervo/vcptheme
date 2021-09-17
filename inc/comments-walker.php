@@ -39,7 +39,7 @@ class origines_walker_comment extends Walker_Comment {
         
     <div id="comment-<?php comment_ID() ?>" class="media well">
         
-        <a class="pull-left" href="<?php comment_author_url(); ?>" target="_blank">
+        <a class="pull-left" href="<?php comment_author(); ?>" target="_blank">
                         <?php echo origines_get_avatar( $ocommentmail, $args['avatar_size'] ); ?>
                 </a>
                 
@@ -50,7 +50,7 @@ class origines_walker_comment extends Walker_Comment {
                                 <br />
                         <?php endif; ?>
                         
-                        <h4 class="comment-heading media-heading pull-left"><?php comment_author_link(); ?></h4>
+                        <h4 class="comment-heading media-heading pull-left"><?php comment_author(); ?></h4>
                         
                         <div class="muted comment-meta commentmetadata pull-right">
                                 <small><em><?php

@@ -594,24 +594,6 @@ function vcp_get_rss($nombre, $url, $numeroitems) {
 
 }
 
-
-
-function vcp_post_ejemplos() {
-
-	// Se trae ejemplos de una URL rss
-
-	$nombre = get_post_custom_values('nombreforo');
-	$ejemplos = get_post_custom_values('urlejemplos');
-
-	 $html = '';
-
-	if ($ejemplos[0])
-		 $html .= vcp_get_rss($nombre[0], $ejemplos[0], 10);
-
-	return $html;
-}
-
-
 /* Función que devuelve la información de descarga, manual, test,... del artículo */
 
 function vcp_informacion_articulo() {
@@ -872,13 +854,6 @@ function vcp_video($codigo,$nombre) {
 	return $html;
 
 }
-
-
-
-
-
-
-
 
 /* IMPLEMENTA FUNCIONES EN OTROS FICHEROS */
 

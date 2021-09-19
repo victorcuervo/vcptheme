@@ -101,11 +101,7 @@
 
 	// Si hay ejemplos relacionados los publicamos
 	// Sobre todo para Manual Web
-	echo vcp_post_ejemplos();
-
-	// Soporte para el plugin WP Related Posts
-	if (function_exists(wp_related_posts))
-		wp_related_posts();
+	// echo vcp_post_ejemplos();
 
 	// Volcamos los vídeos
 	$nombre = get_post_custom_values('nombreforo');

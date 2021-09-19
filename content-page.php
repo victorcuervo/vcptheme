@@ -75,7 +75,7 @@
 	<?php
 
 	// Si hay ejemplos relacionados los publicamos
-	echo vcp_post_ejemplos();
+	// echo vcp_post_ejemplos();
 
 	// Video Display
 	$nombre = get_post_custom_values('nombreforo');

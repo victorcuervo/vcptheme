@@ -119,6 +119,12 @@ $tag_slug = $tag->slug;
 
 				</div> <!-- #FIN DE ROW -->
 
+			<div class="row">
+				<div class="col-md-12">
+					<?php dynamic_sidebar( 'adspost' ); ?>
+				</div>
+			</div>
+
 
 			<div class="headline">
 			<h2>Artículos <?php echo single_tag_title( '', false )?></h2>

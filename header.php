@@ -24,7 +24,6 @@
 <!-- Navegación -->
 <div id="menu" >
 		
-
 			<nav class="navbar-default" role="navigation">
 			  <div class="container-fluid container">
 			    <!-- Brand and toggle get grouped for better mobile display -->

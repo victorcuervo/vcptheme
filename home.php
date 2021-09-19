@@ -68,13 +68,9 @@ get_header(); ?>
 				</div> <!-- #FIN DE ROW -->
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<?php dynamic_sidebar( 'adspost' ); ?>
 				</div>
-				<div class="col-md-6">
-					<?php dynamic_sidebar( 'adspost' ); ?>
-				</div>
-
 			</div>
 
 

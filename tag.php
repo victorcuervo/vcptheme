@@ -35,17 +35,10 @@ $tag_slug = $tag->slug;
 
 				<?php
 
-
-
-
-
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
 					/* HAY QUE VALIDAR QUE TIENE URL, SI NO NO METO LA IMAGEN */
-					if (function_exists('z_taxonomy_image_url'))
+					if (function_exists('z_taxonomy_image_url') && (z_taxonomy_image_url($tag->term_id)!=""))
 						echo '<img src="'.z_taxonomy_image_url($tag->term_id).'" class="pull-right" alt="'.single_tag_title( '', false ).'"/>';
-
-
-
 
 					// Show an optional term description.
 					$term_description = term_description();

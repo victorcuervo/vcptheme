@@ -27,7 +27,7 @@ $tag_slug = $tag->slug;
 
 			<?php
 			
-			edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
+			edit_tag_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
 			
 			if ( have_posts() ) :
 

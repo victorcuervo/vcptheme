@@ -25,15 +25,20 @@ $tag_slug = $tag->slug;
 <div id="cuerpo" class="container">
 
 
-			<?php if ( have_posts() ) :
+			<?php
+			
+			edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
+			
+			if ( have_posts() ) :
 
 
 			?>
 
 			<header class="archive-header">
 				<h1 class="archive-title"><?php printf( __( '%s', 'twentyfourteen' ), single_tag_title( '', false ) ); ?></h1>
-
-				<?php
+				
+				<?php 
+			
 
 					// MOSTRAMOS LA IMAGEN DE LA CATEGORÍA MEDIANTE EL PLUGIN CATEGORIES IMAGES
 					/* HAY QUE VALIDAR QUE TIENE URL, SI NO NO METO LA IMAGEN */
@@ -169,8 +174,11 @@ $tag_slug = $tag->slug;
 
 
 
-				endif;
-			?>
+			endif;
+
+
+?>
+
 
 
 </div><!-- #Fin Contenido Principal -->

@@ -153,7 +153,6 @@ h2, h3 {
  color: #fff;
 }
 
-
 /* Eliminar cosas del bootstrap */
 .page-header {
 	border-bottom: 0px;
@@ -166,6 +165,24 @@ h2, h3 {
 
 .page-header > h1, .page-header > h1 > small {
 	color:#fff;
+}
+
+.navbar-default {
+	background-color: #3365a3;
+	border-color: #2b558a;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #fff;
+}
+
+
+.navbar-default .navbar-brand {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover  {
+	color: #fff;
 }
 
 

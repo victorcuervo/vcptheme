@@ -697,10 +697,6 @@ function vcp_informacion_articulo() {
 }
 
 
-
-
-
-
 function vcp_volver($slug) {
 
 /*
@@ -848,9 +844,8 @@ function vcp_video($codigo,$nombre) {
 	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div><div>';
 	$html .= '<script src="https://apis.google.com/js/platform.js"></script>';
 	$html .= '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
-	$html .= '<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
+	$html .= '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
 	$html .= '</div>';
-
 	return $html;
 
 }
@@ -883,19 +878,3 @@ function remove_cssjs_ver( $src ) {
 }
 add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
 add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
-
-
-/* Quitar jQuery Migrate */
-function remove_jquery_migrate($scripts){
-	if (!is_admin() && isset($scripts->registered['jquery'])) {
-	   $script = $scripts->registered['jquery'];
-					 
-	   if ($script->deps) {
-		  // Check whether the script has any dependencies
-		  $script->deps = array_diff($script->deps, array(
-			 'jquery-migrate'
-		  ));
-	   }
-	}
- }
- add_action('wp_default_scripts', 'remove_jquery_migrate');

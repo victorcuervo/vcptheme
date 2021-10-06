@@ -844,6 +844,7 @@ function vcp_video($codigo,$nombre) {
 	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div><div>';
 	$html .= '<script src="https://apis.google.com/js/platform.js"></script>';
 	$html .= '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
+	$html .= '<div class="embed-responsive embed-responsive-16by9">';
 	$html .= '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
 	$html .= '</div>';
 	return $html;

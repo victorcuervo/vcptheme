@@ -31,7 +31,7 @@ class origines_walker_comment extends Walker_Comment {
     <?php }
      
     /** START_EL */
-    function start_el( &$output, $comment, $depth, $args, $id = 0 ) {
+    function start_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) {            
         $depth++;
         $GLOBALS['comment_depth'] = $depth;
         $GLOBALS['comment'] = $comment;
@@ -70,7 +70,7 @@ class origines_walker_comment extends Walker_Comment {
                          
     <?php }
  
-    function end_el( &$output, $comment, $depth, $args, $id = 0 ) { ?>
+    function end_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) { ?>
         
                 </div><!-- .media-body -->
                 

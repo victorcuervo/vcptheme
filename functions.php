@@ -288,10 +288,9 @@ add_action( 'widgets_init', 'vcp_widgets_init' );
 function vcp_scripts() {
 
 	// METEMOS BOOTSRAP
-
-	wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.1.1' );
+	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7' );	
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
-	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1',true);
+	wp_enqueue_script( 'bootstrap-script', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ), '3.3.7',true);
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
 
 	if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
@@ -614,7 +613,7 @@ function vcp_informacion_articulo() {
 				if (isset($visualizar[0])) {
 	 				$html = '<div class="col-sm-6 col-md-6">';
 	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/visualizar.png" alt="Visualizar Ejemplo"/></a>';
+	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/play.png" alt="Visualizar Ejemplo"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
 	 				$html .= '</div>';
 	 			}
@@ -841,11 +840,11 @@ function vcp_video($codigo,$nombre) {
 	// En algunos casos no solo hay código, por lo que hay que eliminar el texto
 	$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$codigo);
 
-	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div><div>';
+	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div>';
 	$html .= '<script src="https://apis.google.com/js/platform.js"></script>';
 	$html .= '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
 	$html .= '<div class="embed-responsive embed-responsive-16by9">';
-	$html .= '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" frameborder="0" allowfullscreen></iframe>';
+	$html .= '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" allowfullscreen></iframe>';
 	$html .= '</div>';
 	return $html;
 

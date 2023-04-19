@@ -1,5 +1,5 @@
 /*
-Theme Name: VCP
+Theme Name: VCP 2.0
 Theme URI: http://www.victorcuervo.com
 Author: Víctor Cuervo
 Author URI: http://www.victorcuervo.com/
@@ -238,6 +238,11 @@ content: none;
 	height: 50px;
 }
 
+/* Botón lista correo */
+input#mc_signup_submit {
+	background-color: orange;
+	color: #fff;
+}
 
 
 /*--------------------------------------------------------------

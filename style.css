@@ -1,5 +1,5 @@
 /*
-Theme Name: VCP 2.0
+Theme Name: VCP
 Theme URI: http://www.victorcuervo.com
 Author: Víctor Cuervo
 Author URI: http://www.victorcuervo.com/
@@ -22,6 +22,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 */
 
+/* Cabecera */
+
 #destacados {
 	background-color: #e3e3e3;
 	color:orange;
@@ -38,6 +40,42 @@ h2, h3 {
 	display: inline-block;
 	border-bottom: 3px solid #3365A3;
 }
+
+.tag-header h2, .category-header h2 {
+	border-bottom: none;
+	font-size: 36px;
+}
+
+
+.headline {
+	border-bottom: 1px dotted #cecece;
+    display: block;
+    margin: 10px 0;
+}
+
+.headline h3 {
+	margin: 0 0 -2px;
+	padding-bottom: 5px;
+	display: inline-block;
+}
+
+@media (max-width: 768px) {
+	#logo-manual {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  width: 70%;
+	  margin-bottom: 10px;
+	}
+  }
+  
+  @media (min-width: 769px) {
+	#logo-manual {
+	  float: right;
+	  margin-left: 10px;
+	  margin-bottom: 10px;
+	}
+  }
 
 
 
@@ -101,18 +139,7 @@ h2, h3 {
 
 
 
-.headline {
-	border-bottom: 1px dotted #cecece;
-    display: block;
-    margin: 10px 0;
-}
 
-.headline h3 {
-
-	margin: 0 0 -2px;
-	padding-bottom: 5px;
-	display: inline-block;
-}
 
 /* Para los últimos artículos
 #lastArticles .media:first-child {
@@ -293,4 +320,12 @@ input#mc_signup_submit {
 
 .gallery-caption {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+## Enlighter
+--------------------------------------------------------------*/
+
+.enlighter-default {
+	overflow-y: auto;
 }

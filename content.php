@@ -15,6 +15,7 @@
 
 	<header>
 
+		
 		<div class="headline">
 		<?php
 			if ( is_single() ) :
@@ -26,7 +27,7 @@
 			//the_title( '<h2><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		?>
 		</div>
-
+				
 		<div id="post-info">
 
 			<!-- FECHA -->
@@ -65,6 +66,8 @@
 
 
 		</div>
+			
+		
 
 
 	</header><!-- .entry-header -->

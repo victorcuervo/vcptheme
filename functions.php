@@ -57,8 +57,6 @@ if ( ! function_exists( 'twentyfourteen_setup' ) ) :
  */
 function twentyfourteen_setup() {
 
-
-
 	// This theme uses wp_nav_menu() in two locations.
 
 	// REGISTRAMOS LOS DOS MENÚS QUE VAMOS A UTILIZAR
@@ -67,10 +65,6 @@ function twentyfourteen_setup() {
 		'secondary' => __( 'Menú Elementos Importantes', 'twentyfourteen' ),
 		'menu_footer' => __( 'Menú del pie de página', 'vcp')
 	) );
-
-
-
-
 
 	/*
 	 * Make Twenty Fourteen available for translation.
@@ -92,11 +86,6 @@ function twentyfourteen_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 672, 372, true );
 	add_image_size( 'twentyfourteen-full-width', 1038, 576, true );
-
-
-
-
-
 
 
 	/*
@@ -196,12 +185,7 @@ function vcp_widgets_init() {
 	register_widget( 'VCP_Recent_Widget' );
 
 
-
-
-
  // MIS AREAS DE FOOTER
-
-
 
 	register_sidebar( array(
 			'name'          => __( 'Pie de Página Izquierdo', 'vcp' ),
@@ -272,6 +256,36 @@ register_sidebar( array(
 		'after_widget'  => '</div>'
 	) );
 
+	register_sidebar( array(
+		'name'          => __( 'Categoria Izquierda', 'vcp' ),
+		'id'            => 'cat1',
+		'description'   => __( 'Aparece en la categoría a la izquierda.', 'vcp' ),
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="headline"><h3>',
+		'after_title'   => '</h3></div>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Categoria Centro', 'vcp' ),
+		'id'            => 'cat2',
+		'description'   => __( 'Aparece en la categoría en el centro.', 'vcp' ),
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="headline"><h3>',
+		'after_title'   => '</h3></div>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Categoria Derecha', 'vcp' ),
+		'id'            => 'cat3',
+		'description'   => __( 'Aparece en la categoría a la derecha.', 'vcp' ),
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="headline"><h3>',
+		'after_title'   => '</h3></div>',
+	) );
+
 
 }
 add_action( 'widgets_init', 'vcp_widgets_init' );
@@ -288,8 +302,12 @@ add_action( 'widgets_init', 'vcp_widgets_init' );
 function vcp_scripts() {
 
 	// METEMOS BOOTSRAP
-	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7' );	
+
+	//wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.1.1' );
+	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7' );
+	
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
+	//wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1',true);
 	wp_enqueue_script( 'bootstrap-script', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ), '3.3.7',true);
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
 
@@ -611,7 +629,7 @@ function vcp_informacion_articulo() {
 	 			$html = '';
 
 				if (isset($visualizar[0])) {
-	 				$html = '<div class="col-sm-6 col-md-6">';
+	 				$html = '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/play.png" alt="Visualizar Ejemplo"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
@@ -620,7 +638,7 @@ function vcp_informacion_articulo() {
 
 
 	 			if (isset($descargar[0])) {
-	 				$html .= '<div class="col-sm-6 col-md-6">';
+	 				$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$descargar[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/download.png" alt="Descargar Ejemplo"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$descargar[0].'">Descargar Código Fuente</a></p>';
@@ -629,25 +647,25 @@ function vcp_informacion_articulo() {
 
 
 	 			if (isset($errorcodigo[0])) {
-	 				$html .= '<div class="col-sm-6 col-md-6">';
+	 				$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$errorcodigo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/error.png" alt="Reportar Error"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código Fuente</a></p>';
+	 				$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código</a></p>';
 	 				$html .= '</div>';
 	 			}
 
 
 	 			if (isset($nombre[0]) && isset($urlforo[0])) {
-					$html .= '<div class="col-sm-6 col-md-6">';
+					$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$urlforo[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/question.png" alt="Foro para Dudas '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Foro de '.$nombre[0].'</a></p>';
+	 				$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Preguntas de '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
 
 
 	 			if (isset($nombre[0]) && isset($urlmanual[0])) {
-					$html .= '<div class="col-sm-6 col-md-6">';
+					$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$urlmanual[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/manual.png" alt="Manual sobre '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlmanual[0].'">Manual de '.$nombre[0].'</a></p>';
@@ -656,16 +674,16 @@ function vcp_informacion_articulo() {
 
 
 	 			if (isset($nombre[0]) && isset($urltest[0])) {
-					$html .= '<div class="col-sm-6 col-md-6">';
+					$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$urltest[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/test.png" alt="Test de '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test de '.$nombre[0].'</a></p>';
+	 				$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test sobre '.$nombre[0].'</a></p>';
 	 				$html .= '</div>';
 	 			}
 
 
 	 			if (isset($nombre[0]) && isset($urlcharla[0])) {
-					$html .= '<div class="col-sm-6 col-md-6">';
+					$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$urlcharla[0].'" target="_blank">';
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/talk.png" alt="Charla sobre '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlcharla[0].'">Charla sobre '.$nombre[0].'</a></p>';
@@ -674,7 +692,7 @@ function vcp_informacion_articulo() {
 
 
 				if (isset($nombre[0]) && isset($urlcurso[0])) {
-					$html .= '<div class="col-sm-6 col-md-6">';
+					$html .= '<div class="col-6 col-sm-4 col-md-6">';
 	 				$html .= '<a href="'.$urlcurso[0].'" target="_blank">';;
 	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/curso.png" alt="Curso de '.$nombre[0].'"/></a>';
 	 				$html .= '<p class="text-center"><a href="'.$urlcurso[0].'">Curso de '.$nombre[0].'</a></p>';
@@ -830,7 +848,7 @@ function vcp_thumbnail() {
 		else if ($sitiothumb == 'left')
 			$html = the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
 		else
-			$html = the_post_thumbnail( 'full', array('class'=>"pull-right img-responsive thumb"));
+			$html = the_post_thumbnail( 'full', array('class'=>"img-responsive thumb",'id'=>'logo-manual'));
 
 			return $html;
 }

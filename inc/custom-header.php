@@ -58,26 +58,42 @@ function vcp_header_style(){
 		<?php $header_image = get_header_image();			
 		if ($header_image) { ?>
 				
-			<style type="text/css">
+			<style>
 
         	#cabecera {
 				background: url(<?php echo $header_image; ?>) no-repeat;
-				height: <?php echo get_custom_header()->height; ?>px;
 				border-top: 1px solid #fff;
-
 				background-size: cover;
 				-moz-background-size: cover;
 				-webkit-background-size: cover;
 				-o-background-size: cover;
+				background-position: center;
+			}
+
+			@media (max-width: 480px) {
+				#cabecera {
+					height: 100px;
+				}
+			}
+			@media (min-width: 481px) and (max-width: 1024px) {
+				#cabecera {
+					height: 150px;
+				}
+			}
+
+			@media (min-width: 1025px) {
+				#cabecera {
+					height: 250px;
+				}
 			}
 
         	</style>
     <?php }
     	$header_color = get_header_textcolor();
     	if ($header_color) { ?>
-    		<style type="text/css">
+    		<style>
         	#cabecera, #cabecera h1, #cabecera a, #cabecera a:hover, #cabecera small {
-            	color: #<?php echo $header_color; ?>;            	            	
+            	color: <?php echo $header_color; ?>;            	            	
         	}
         	</style>    	
     	<?php }       

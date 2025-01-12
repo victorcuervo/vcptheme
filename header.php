@@ -7,7 +7,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="es-ES">
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
@@ -19,58 +19,42 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo('template_directory'); ?>/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php bloginfo('template_directory'); ?>/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php bloginfo('template_directory'); ?>/img/favicon-16x16.png">
+	<link rel="manifest" href="<?php bloginfo('template_directory'); ?>/img/site.webmanifest">
+
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 	<!-- Navegación -->
-	<div id="menu">
-
-		<nav class="navbar-default" role="navigation">
-			<div class="container-fluid container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="<?php echo get_home_url(); ?>"><?php bloginfo('name'); ?></a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-					<?php if (has_nav_menu('primary'))
-						wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'nav navbar-nav'));
-					?>
-
-
-					<form class="navbar-form navbar-right" role="search" action="<?php echo get_home_url(); ?>/search/"
-						id="cse-search-box">
-						<div class="form-group">
-							<input type="text" name="q" size="31" class="form-control" placeholder="¿Qué buscas?">
-							<input type="hidden" name="cx" value="partner-pub-<?php echo get_option('vcp_search'); ?>" />
-							<input type="hidden" name="cof" value="FORID:10" />
-							<input type="hidden" name="ie" value="UTF-8" />
-						</div>
-						<button type="submit" class="btn btn-default">Buscar</button>
-					</form>
-					<!--<script type="text/javascript" src="http://www.google.es/coop/cse/brand?form=cse-search-box&amp;lang=es"></script>-->
-
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
-
-	</div>
-
+	<nav id="menu-principal" class="navbar navbar-expand-md navbar-dark">
+		<div class="container">				
+			<a class="navbar-brand" href="<?php echo get_home_url(); ?>"><?php bloginfo('name'); ?></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<?php if (has_nav_menu('primary'))
+					wp_nav_menu(array('container' => '', 'theme_location' => 'primary', 'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0'));
+				?>
+				<form class="d-flex" role="search" action="<?php echo get_home_url(); ?>/search/" id="cse-search-box">
+					<input class="form-control me-2" name="q" type="search" placeholder="¿Qué buscas?" aria-label="Search">
+					<input type="hidden" name="cx" value="partner-pub-<?php echo get_option('vcp_search'); ?>">
+					<input type="hidden" name="cof" value="FORID:10">
+					<input type="hidden" name="ie" value="UTF-8">
+					<button class="btn btn-outline-light" type="submit">Buscar</button>
+				</form>
+			</div>
+		</div>
+	</nav>
 
 	<!-- Cabecera -->
 	<div id="cabecera">
 		<div class="container">
-			<!-- <div class="page-header col-md-4"> -->
 			<div class="page-header">
 
 				<?php
@@ -79,24 +63,20 @@
 					$titulo = single_post_title('', FALSE);
 
 				if (is_front_page())
-					echo '<h1>' . get_bloginfo('name') . '<br/><small>' . get_bloginfo('description') . '</small></h1>';
+					echo '<h1>' . get_bloginfo('name') . '<br><small class="m-1 fs-4 lh-sm">' . get_bloginfo('description') . '</small></h1>';
 				else
-					echo '<h1>' . $titulo . '<h1>';
-
-
+					echo '<h1>' . $titulo . '</h1>';
 				?>
 
 			</div>
-
 			<?php dynamic_sidebar('adscabecera'); ?>
-
 		</div>
+		
 	</div>
 
-
 	<!-- Menu Secundario -->
-	<div id="destacados">
-		<div class="container hidden-sm hidden-xs">
+	<nav id="destacados">
+		<div class="container d-none d-md-flex">
 			<p class="navbar-text"><strong>No Te Pierdas:</strong> </p>
 
 			<?php if (has_nav_menu('secondary'))
@@ -104,4 +84,4 @@
 			?>
 
 		</div>
-	</div>
+	</nav>

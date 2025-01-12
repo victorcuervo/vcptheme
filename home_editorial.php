@@ -138,8 +138,7 @@ get_header(); ?>
 
 	<!-- Vídeo -->
 	<?php
-
-		echo 'Empezamos con el vídeo';
+			
 		// Recupero el último vídeo
 		$idtagvideo = get_term_by('name', 'Vídeo', 'post_tag')->term_id;
 		$post_videos = wp_get_recent_posts(array('numberposts' => '1', 'post_status' => 'publish', 'tag_id' => $idtagvideo));

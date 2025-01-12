@@ -48,8 +48,8 @@ get_header(); ?>
 				<h2 class="titular-1"><?php echo $posteditorial["post_title"] ?></h2>
 				<p><?php echo $posteditorial["post_excerpt"] ?></p>
 				<span><a href="<?php echo get_permalink($posteditorial["ID"]) ?>" title="<?php echo esc_attr($posteditorial["post_title"]) ?>" class="btn btn-primary btn-sm">Leer Más</a>
-				<a href="<?php echo get_permalink($posteditorial["ID"]) ?>" title="<?php echo esc_attr($posteditorial["post_title"]) ?>" class="btn btn-primary btn-sm">Otras Editoriales</a>
-				<a href="<?php echo get_permalink($posteditorial["ID"]) ?>" title="<?php echo esc_attr($posteditorial["post_title"]) ?>" class="btn btn-primary btn-sm">Suscribirse</a></span>
+				<a href="/categoria/editorial/" title="Editoriales de Línea de Código" class="btn btn-primary btn-sm">Otras Editoriales</a>
+				<a href="/lista-de-correo/" title="Lista de Correo de Línea de Código" class="btn btn-primary btn-sm">Suscribirse</a></span>
 			</div>
 			<div class="col-md-6">
 				<?php echo get_the_post_thumbnail($posteditorial["ID"], 'full', array('class' => 'img-fluid rounded h-100', 'alt' => get_the_title($posteditorial["ID"]))); ?>
@@ -104,6 +104,7 @@ get_header(); ?>
 					['url' => '/php/', 'img' => 'php_150.png', 'alt' => 'Ejemplos Programación PHP', 'title' => 'PHP'],
 					['url' => '/python/', 'img' => 'python_150.png', 'alt' => 'Ejemplos Programación Python', 'title' => 'Python'],
 					['url' => '/reactjs/', 'img' => 'react_150.png', 'alt' => 'Ejemplos Programación React', 'title' => 'React'],
+					['url' => '/categoria/rust/', 'img' => 'rust_150.png', 'alt' => 'Ejemplos Programación Rust', 'title' => 'Rust'],
 					['url' => '/sql/', 'img' => 'sql_150.png', 'alt' => 'Ejemplos Programación SQL', 'title' => 'SQL'],
 					['url' => '/typescript/', 'img' => 'typescript_150.png', 'alt' => 'Ejemplos Programación Typescript', 'title' => 'Typescript'],
 					['url' => '/xml/', 'img' => 'xml_150.png', 'alt' => 'Ejemplos Desarrollo XML', 'title' => 'XML'],
@@ -138,6 +139,7 @@ get_header(); ?>
 	<!-- Vídeo -->
 	<?php
 
+		echo 'Empezamos con el vídeo';
 		// Recupero el último vídeo
 		$idtagvideo = get_term_by('name', 'Vídeo', 'post_tag')->term_id;
 		$post_videos = wp_get_recent_posts(array('numberposts' => '1', 'post_status' => 'publish', 'tag_id' => $idtagvideo));

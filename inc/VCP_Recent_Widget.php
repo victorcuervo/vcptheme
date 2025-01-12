@@ -54,7 +54,7 @@ class VCP_Recent_Widget extends WP_Widget {
 			array_push($words, '…');
 			$the_excerpt = implode(' ', $words);
 			endif;
-			$the_excerpt = '<p>' . $the_excerpt . '</p>';
+			$the_excerpt = '<p style="line-height:1em">' . $the_excerpt . '</p>';
 			return $the_excerpt;
 		}
 		
@@ -63,19 +63,26 @@ class VCP_Recent_Widget extends WP_Widget {
 		foreach( $recent_posts as $recent ){
 		
 			?>
-			<div class="media">
-				 <a class="pull-left" href="<?php echo get_permalink($recent["ID"])?>">
-				    <div class="img-thumbnail">
-				    	<?php echo get_the_post_thumbnail( $recent["ID"], array(75,75)); ?>
-				    </div>
-				  </a>
-				  <div class="media-body">
-				    <h4 class="media-heading"><?php echo '<a href="' . get_permalink($recent["ID"]) . '" title="'.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a>'?></h4>
-					    
-					    <?php echo get_excerpt_by_id($recent["ID"]); ?>
+			<div class="last-articles d-flex">
+				<div class="flex-shrink-0">
+				<a class="pull-left" href="<?php echo get_permalink($recent["ID"]) ?>">
+					<div class="img-thumbnail rounded float-start">
+						<?php echo get_the_post_thumbnail($recent["ID"], array(75, 75)); ?>
+					</div>
+				</a>
+				</div>
+				<div class="flex-grow-1 ms-3">
+					<h4 class="media-heading">
+						<?php echo '<a href="' . get_permalink($recent["ID"]) . '" title="' . esc_attr($recent["post_title"]) . '" >' . $recent["post_title"] . '</a>' ?>
+					</h4>
 
-			      </div>
-			</div>	
+					<?php echo get_excerpt_by_id($recent["ID"]); ?>
+				</div>
+			</div>
+
+			
+
+
 			<?php
 
 

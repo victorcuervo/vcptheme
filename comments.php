@@ -64,6 +64,9 @@ if ( post_password_required() ) {
 	<?php endif; // have_comments() ?>
 
 	<?php 
+
+	// Recuperamos la categoría
+	$categories = get_the_category();
 	
 	comment_form( array(
 		'title_reply'=>'¿Algo que nos quieras comentar?',
@@ -91,7 +94,7 @@ if ( post_password_required() ) {
 
 			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comentario ', 'twentyfourteen' ) . '</label><textarea id="comment" class="form-control" name="comment" cols="70" rows="8" aria-required="true"></textarea></p>',
 			'comment_notes_before' => '<p class="comment-notes">Déjanos tu comentario, no te preocupes que tu email no será publicado</p>',
-			'comment_notes_after' => ''
+			'comment_notes_after' => vcp_foro($categories[0]->name)
 		)); 
 		
 		?>

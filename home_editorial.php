@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Home New Editorial
- * Plantilla para la página principal
+ * Template Name: Editorial
+ * Plantilla para la página principal que incluye la editorial
  * @package WordPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0

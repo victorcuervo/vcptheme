@@ -8,6 +8,20 @@ Some useful links:
 
 # changelog
 
+## 1.2
+*2024-12-30*
+* Creada una nueva template para poder incorporar: editorial, vídeo y blogs
+* Creada página de autores 
+
+
+## 1.1
+*2023-04-20*
+
+* Subido el h1 a nivel de cabecera
+* Se oculta en menú No Te pierdas para móviles
+* Eliminados genericons e incorporados fontawesome
+* Adaptado el tema a Bootstrap 5.3
+
 ## 1.0.2
 *2017-05-15 02:05*
 

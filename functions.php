@@ -66,6 +66,13 @@ function twentyfourteen_setup() {
 		'menu_footer' => __( 'Menú del pie de página', 'vcp')
 	) );
 
+
+	// Aceptamos ShortCode en Menús
+	if ( ! has_filter( 'wp_nav_menu', 'do_shortcode' ) ) {
+		add_filter( 'wp_nav_menu', 'shortcode_unautop' );
+		add_filter( 'wp_nav_menu', 'do_shortcode', 11 );
+	}
+
 	/*
 	 * Make Twenty Fourteen available for translation.
 	 *
@@ -83,6 +90,21 @@ function twentyfourteen_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Enable support for Post Thumbnails, and declare two sizes.
+
+
+
+
+
+
+	/* 
+	
+	REVISAR YA QUE SON LAS IMAGENES PARA EL THUMBNAIL
+	
+	*/
+
+
+
+
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 672, 372, true );
 	add_image_size( 'twentyfourteen-full-width', 1038, 576, true );
@@ -226,8 +248,8 @@ register_sidebar( array(
 		'description'   => __( 'Aparece en la barra izquierda', 'vcp' ),
 		'before_widget' => '<div class="sidebar">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<div class="headline"><h3>',
-		'after_title'   => '</h3></div>',
+		'before_title'  => '<div class="headline"><h4>',
+		'after_title'   => '</h4></div>',
 	) );
 
 	// Áreas de Publicidad
@@ -252,7 +274,7 @@ register_sidebar( array(
 		'name'          => __( 'Publicidad Cabecera', 'vcp' ),
 		'id'            => 'adscabecera',
 		'description'   => __( 'Aparece en la cabecera', 'vcp' ),
-		'before_widget' => '<div class="ads col-md-8 hidden-sm hidden-xs">',
+		'before_widget' => '<div class="ads">',
 		'after_widget'  => '</div>'
 	) );
 
@@ -301,18 +323,20 @@ add_action( 'widgets_init', 'vcp_widgets_init' );
  */
 function vcp_scripts() {
 
-	// METEMOS BOOTSRAP
-
-	//wp_enqueue_style( 'bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.1.1' );
-	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7' );
-	
+	wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), '5.3.0' );	
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
-	//wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '3.1.1',true);
-	wp_enqueue_script( 'bootstrap-script', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array( 'jquery' ), '3.3.7',true);
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.3.0',true);	
+
+	// Quitamos los de Guttemberg
+	wp_dequeue_style( 'wp-block-library');
+	wp_dequeue_style( 'wp-block-library-theme' );
 
 	if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
 		wp_enqueue_script( 'comment-reply' );
+
+	if (is_singular())
+		wp_enqueue_script( 'github', 'https://buttons.github.io/buttons.js',null, '1.0',false);
+
 
 }
 add_action( 'wp_enqueue_scripts', 'vcp_scripts' );
@@ -566,9 +590,12 @@ function my_new_contactmethods( $contactmethods ) {
     $contactmethods['facebook'] = 'Facebook';
     $contactmethods['youtube'] = 'YouTube';
     $contactmethods['linkedin'] = 'LinkedIn';
-    $contactmethods['googleplus'] = 'Google Plus';
+	$contactmethods['github'] = 'Github';
+	$contactmethods['instagram'] = 'Instagram';
     return $contactmethods;
+
 }
+
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 
 
@@ -616,99 +643,99 @@ function vcp_get_rss($nombre, $url, $numeroitems) {
 function vcp_informacion_articulo() {
 
 
-	 			$nombre = get_post_custom_values('nombreforo');
-	 			$descargar = get_post_custom_values('descargar');
-	 			$visualizar = get_post_custom_values('visualizar');
-	 			$errorcodigo = get_post_custom_values('errorcodigo');
-	 			$urlcharla = get_post_custom_values('urlcharla');
-	 			$urlforo = get_post_custom_values('urlforo');
-	 			$urltest = get_post_custom_values('urltest');
-	 			$urlmanual = get_post_custom_values('urlmanual');
-	 			$urlcurso = get_post_custom_values('urlcurso');
+		$nombre = get_post_custom_values('nombreforo');
+		$descargar = get_post_custom_values('descargar');
+		$visualizar = get_post_custom_values('visualizar');
+		$errorcodigo = get_post_custom_values('errorcodigo');
+		$urlcharla = get_post_custom_values('urlcharla');
+		$urlforo = get_post_custom_values('urlforo');
+		$urltest = get_post_custom_values('urltest');
+		$urlmanual = get_post_custom_values('urlmanual');
+		$urlcurso = get_post_custom_values('urlcurso');
 
-	 			$html = '';
+		$html = '';
 
-				if (isset($visualizar[0])) {
-	 				$html = '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$visualizar[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/play.png" alt="Visualizar Ejemplo"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
-	 				$html .= '</div>';
-	 			}
-
-
-	 			if (isset($descargar[0])) {
-	 				$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$descargar[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/download.png" alt="Descargar Ejemplo"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$descargar[0].'">Descargar Código Fuente</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($visualizar[0])) {
+			$html = '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$visualizar[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/play.png" alt="Visualizar Ejemplo"/></a>';
+			$html .= '<p class="text-center"><a href="'.$visualizar[0].'">Ejecutar el Ejemplo</a></p>';
+			$html .= '</div>';
+		}
 
 
-	 			if (isset($errorcodigo[0])) {
-	 				$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$errorcodigo[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/error.png" alt="Reportar Error"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($descargar[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$descargar[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/download.png" alt="Descargar Ejemplo"/></a>';
+			$html .= '<p class="text-center"><a href="'.$descargar[0].'">Descargar Código Fuente</a></p>';
+			$html .= '</div>';
+		}
 
 
-	 			if (isset($nombre[0]) && isset($urlforo[0])) {
-					$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$urlforo[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/question.png" alt="Foro para Dudas '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Preguntas de '.$nombre[0].'</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($errorcodigo[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$errorcodigo[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/error.png" alt="Reportar Error"/></a>';
+			$html .= '<p class="text-center"><a href="'.$errorcodigo[0].'">Error en el Código</a></p>';
+			$html .= '</div>';
+		}
 
 
-	 			if (isset($nombre[0]) && isset($urlmanual[0])) {
-					$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$urlmanual[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/manual.png" alt="Manual sobre '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urlmanual[0].'">Manual de '.$nombre[0].'</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($nombre[0]) && isset($urlforo[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$urlforo[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/question.png" alt="Foro para Dudas '.$nombre[0].'"/></a>';
+			$html .= '<p class="text-center"><a href="'.$urlforo[0].'">Preguntas de '.$nombre[0].'</a></p>';
+			$html .= '</div>';
+		}
 
 
-	 			if (isset($nombre[0]) && isset($urltest[0])) {
-					$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$urltest[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/test.png" alt="Test de '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test sobre '.$nombre[0].'</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($nombre[0]) && isset($urlmanual[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$urlmanual[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/manual.png" alt="Manual sobre '.$nombre[0].'"/></a>';
+			$html .= '<p class="text-center"><a href="'.$urlmanual[0].'">Manual de '.$nombre[0].'</a></p>';
+			$html .= '</div>';
+		}
 
 
-	 			if (isset($nombre[0]) && isset($urlcharla[0])) {
-					$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$urlcharla[0].'" target="_blank">';
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/talk.png" alt="Charla sobre '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urlcharla[0].'">Charla sobre '.$nombre[0].'</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($nombre[0]) && isset($urltest[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$urltest[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/test.png" alt="Test de '.$nombre[0].'"/></a>';
+			$html .= '<p class="text-center"><a href="'.$urltest[0].'">Test sobre '.$nombre[0].'</a></p>';
+			$html .= '</div>';
+		}
 
 
-				if (isset($nombre[0]) && isset($urlcurso[0])) {
-					$html .= '<div class="col-6 col-sm-4 col-md-6">';
-	 				$html .= '<a href="'.$urlcurso[0].'" target="_blank">';;
-	 				$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/curso.png" alt="Curso de '.$nombre[0].'"/></a>';
-	 				$html .= '<p class="text-center"><a href="'.$urlcurso[0].'">Curso de '.$nombre[0].'</a></p>';
-	 				$html .= '</div>';
-	 			}
+		if (isset($nombre[0]) && isset($urlcharla[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$urlcharla[0].'" target="_blank">';
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/talk.png" alt="Charla sobre '.$nombre[0].'"/></a>';
+			$html .= '<p class="text-center"><a href="'.$urlcharla[0].'">Charla sobre '.$nombre[0].'</a></p>';
+			$html .= '</div>';
+		}
 
-	 			$cabecera = '<div class="headline"><h3>Artículo</h3></div>'.
-	 							'<div class="panel panel-primary">'.
- 									'<div class="panel-body">'.
- 										'<div class="row">';
- 				$pie = '</div>
- 							</div>
- 								</div>';
 
- 				if ($html!='')
- 					echo $cabecera.$html.$pie;
+		if (isset($nombre[0]) && isset($urlcurso[0])) {
+			$html .= '<div class="col-6 col-sm-4 col-md-6">';
+			$html .= '<a href="'.$urlcurso[0].'" target="_blank">';;
+			$html .= '<img class="img-thumbnail center-block" src="'.get_template_directory_uri().'/img/curso.png" alt="Curso de '.$nombre[0].'"/></a>';
+			$html .= '<p class="text-center"><a href="'.$urlcurso[0].'">Curso de '.$nombre[0].'</a></p>';
+			$html .= '</div>';
+		}
+
+		$cabecera = '<div class="headline"><h3>Artículo</h3></div>'.
+						'<div class="panel panel-primary">'.
+							'<div class="panel-body">'.
+								'<div class="row">';
+		$pie = '</div>
+					</div>
+						</div>';
+
+		if ($html!='')
+			echo $cabecera.$html.$pie;
 
 
 }
@@ -730,16 +757,22 @@ function vcp_volver($slug) {
 	$slug_a_buscar = substr($slug,0,strrpos($slug,'-'));
 
 	// Validamos si es una categoría
-	$categoria = get_category_by_slug( $slug_a_buscar );
+	$categoria = get_category_by_slug($slug_a_buscar);
 
 	if (empty($categoria)) {
 		// Si no es una categoría lo buscamos como tag
 		$etiqueta = get_term_by('slug',$slug_a_buscar,'post_tag');
-		$etiqueta_link = get_tag_link($etiqueta->term_id);
-		return "<span class='genericon genericon-rewind'></span> <a href='{$etiqueta_link}' title='{$etiqueta->name} Tag' class='{$etiqueta->slug}'>Volver a {$etiqueta->name}</a>";
+
+		// Comprobamos que sea una etiqueta
+		if ((isset($etiqueta)) && (isset($etiqueta->term_id))) {
+			$etiqueta_link = get_tag_link($etiqueta->term_id);
+			return "<i class='fa-solid fa-backward'></i> <a href='{$etiqueta_link}' title='Elementos {$etiqueta->name}' class='{$etiqueta->slug}'>Volver a {$etiqueta->name}</a>";
+		} else {
+			return '';
+		}
 	} else {
 		$categoria_link = get_category_link($categoria->term_id);
-		return "<span class='genericon genericon-rewind'></span> <a href='{$categoria_link}' title='{$categoria->name} Tag' class='{$categoria->slug}'>Volver a {$categoria->name}</a>";
+		return "<i class='fa-solid fa-backward'></i> <a href='{$categoria_link}' title='Elementos {$categoria->name}' class='{$categoria->slug}'>Volver a {$categoria->name}</a>";
 	}
 
 
@@ -754,6 +787,7 @@ function vcp_tags($nombre) {
  * Serían las tags que coinciden con dicho nombre
  */
 
+	/*
 	// Buscamos tags con el nombre y un espacio
 	$tags = get_tags(array('name__like'=>$nombre.' '));
 
@@ -789,9 +823,40 @@ function vcp_tags($nombre) {
 	}
 
 	return $html;
+	*/
+
+	
+	// Buscamos tags con el nombre y un espacio
+	$tags = get_tags(array('name__like'=>$nombre.' '));
+
+	$html = '';
+
+
+	if (sizeof($tags)>0) {
+
+		$html = '<div class="headline"><h2>Elementos de '.$nombre.'</h2></div>';
+		$html .= '<div><ul class="tag-list">';
+
+
+		foreach ( $tags as $tag ) {
+
+			$tag_link = get_tag_link( $tag->term_id );
+
+
+			$html .= "<li><a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+			$html .= "{$tag->name}</a></li>";
+		}
+
+		$html .= '</ul></div>';
+
+
+	}
+
+	return $html;
 
 
 }
+
 
 function vcp_categories($nombre,$id) {
 
@@ -836,37 +901,51 @@ function vcp_categories($nombre,$id) {
 }
 
 
-function vcp_thumbnail() {
-	/* Función que gestiona como se mostrará el thumbnail de las páginas y
-		post, si est centrado o a la izquierda */
+function vcp_thumbnail($option,$category = '') {
+	/* 
+	
+		Función que gestiona como se mostrará el thumbnail de las páginas y
+		post, si est centrado o a la izquierda 
+
+		El parametro $option puede indicar que sea del artículo o de la categoría
+		ya que se recupera la imagen de diferentes sitios:
+			- article
+			- category
+
+		Para las imágenes de categoría hay que comprobar que está la extensión
+		
+	*/
+
+	$imagen = '';
+	
+	// Buscamos la imagen
+	if ($option == 'article')
+		$imagen = get_the_post_thumbnail_url(null, 'full');
+	else if (($option == 'category') && function_exists('z_taxonomy_image_url') && z_taxonomy_image_url()) 
+		$imagen = z_taxonomy_image_url();
+
+	if ($imagen != '')			
+		return '<img src="'.$imagen.'" class="img-fluid" alt="Artículos '.$category.'">';
+	else 
+		return '';
+
+	
+
+	/*
 
 		$sitiothumb =  get_option('vcp_thumbnail');
-		$html = '';
-
 		if ($sitiothumb == 'center')
-			$html = the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
-		else if ($sitiothumb == 'left')
-			$html = the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
-		else
-			$html = the_post_thumbnail( 'full', array('class'=>"img-responsive thumb",'id'=>'logo-manual'));
-
-			return $html;
-}
-
-function vcp_video($codigo,$nombre) {
-
-	// En algunos casos no solo hay código, por lo que hay que eliminar el texto
-	$codigovideo = str_replace('https://www.youtube.com/playlist?list=', '',$codigo);
-
-	$html  = '<div class="headline"><h3>Vídeos sobre '.$nombre.'</h3></div>';
-	$html .= '<script src="https://apis.google.com/js/platform.js"></script>';
-	$html .= '<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div><br/>';
-	$html .= '<div class="embed-responsive embed-responsive-16by9">';
-	$html .= '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list='.$codigovideo.'" allowfullscreen></iframe>';
-	$html .= '</div>';
-	return $html;
+		$html .= the_post_thumbnail( 'full', array('class'=>"center-block img-responsive img-cabecera"));
+	else if ($sitiothumb == 'left')
+		$html .= the_post_thumbnail( 'full', array('class'=>"pull-left img-responsive thumb"));
+	else
+	*/
 
 }
+
+
+
+
 
 /* IMPLEMENTA FUNCIONES EN OTROS FICHEROS */
 
@@ -896,3 +975,267 @@ function remove_cssjs_ver( $src ) {
 }
 add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
 add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
+
+
+
+/* Personalización de los elementos li y a del menú */
+
+function _namespace_menu_item_class( $classes, $item ) {       
+    $classes[] = "nav-item"; // you can add multiple classes here
+    return $classes;
+} 
+function _namespace_menu_anchor_class( $atts, $item, $args ) {    
+    $atts['class'] = "nav-link";
+    return $atts;
+}
+
+add_filter( 'nav_menu_css_class' , '_namespace_menu_item_class' , 10, 2 );
+add_filter( 'nav_menu_link_attributes', '_namespace_menu_anchor_class', 10, 3 );
+
+
+
+
+function vcp_getmanual($category) {
+
+	$cats = [
+		'Javascript' => ['/img/tutorials/javascript.png','https://manualweb.net/javascript?utm_source=lineadecodigo&utm_medium=download&utm_id=javascript&utm_campaign=book'],
+		'HTML5' =>  ['/img/tutorials/html5.jpeg','https://manualweb.net/html5?utm_source=lineadecodigo&utm_medium=download&utm_id=html5&utm_campaign=book'],
+		'Java' =>  ['/img/tutorials/java.jpeg','https://manualweb.net/java?utm_source=lineadecodigo&utm_medium=download&utm_id=javas&utm_campaign=book'],
+		'MongoDB' =>  ['/img/tutorials/mongodb.jpeg','https://manualweb.net/mongodb?utm_source=lineadecodigo&utm_medium=download&utm_id=mongodb&utm_campaign=book'],
+		'Python' =>  ['/img/tutorials/python.jpeg','https://manualweb.net/python?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book'],
+		'Dart' => ['/img/tutorials/dart.webp','https://manualweb.net/dart?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book'],
+		'CSS' => ['/img/tutorials/css.webp','https://manualweb.net/css?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book']
+	];
+	
+	$respuesta = '';
+
+	if (isset($cats[$category]))
+		$respuesta =  '<div class="headline"><h4>Manual '.$category.'</h4></div>'
+				.'<p class="manual">Aprende más sobre '.$category.' <a href="'.$cats[$category][1].'">consultando online o descargando nuestro manual</a>.'
+				.'<div><a href="'.$cats[$category][1].'"><img class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Tutorial '.$category.'"/></a></div>';
+
+	return $respuesta;
+
+}
+
+function vcp_gettest($category) {
+
+	$cats = [
+		'Javascript' => ['/img/tests/javascript.png','https://testprogramacion.com/javascript/'],
+		'Java' => ['/img/tests/java.png','https://testprogramacion.com/java/'],
+		'HTML5' => ['/img/tests/html5.png','https://testprogramacion.com/html5/'],
+		'HTML' => ['/img/tests/html.png','https://testprogramacion.com/html/'],
+		'CSS' => ['/img/tests/css.png','https://testprogramacion.com/css/'],
+		'Bootstrap' => ['/img/tests/bootstrap.png','https://testprogramacion.com/bootstrap/'],
+		'MongoDB' => ['/img/tests/mongodb.png','https://testprogramacion.com/mongodb/'],		
+	];
+
+	$respuesta = '';
+	
+	if (isset($cats[$category]))
+		$respuesta =  '<div class="headline"><h4>Test '.$category.'</h4></div>'
+					.'<p class="test">¿Te atreves a probar tus <a href="'.$cats[$category][1].'">habilidades y conocimiento en '.$category.'</a> con nuestro test?'
+					.'<div><a href="'.$cats[$category][1].'"><img class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Test '.$category.'"/></a></div>';
+
+	return $respuesta;
+
+}
+
+function vcp_getvideo($category,$video) {
+
+	$cats = [
+		'Bootstrap' => ['PLLVIhySQmrVZGCCZGraNWZsYl17aVQF2G'],
+		'HTML5' => ['PLLVIhySQmrVZvt63iAl2xSwTePNmd-UhI'],
+		'MongoDB' => ['PLLVIhySQmrVZGA6RpEkZJEH3rQOrHbi_c'],
+		'Javascript' => ['PLLVIhySQmrVaRju-qP84x9YRqTtA_GmfK'],
+		'Java' => ['PLLVIhySQmrVbjCFPla5c0OIp6iNWfM-hq'],
+		'HTML' => ['PLLVIhySQmrVaaLfsbi9VHVffq3Kk8KAST'],
+	];
+
+	$respuesta = '';
+
+	// Comprobamos si enlazar a un vídeo en concreto
+	if (isset($video))
+		$codigovideo = 'https://www.youtube.com/watch?v='.$video;
+	else if (isset($cats[$category]))
+		$codigovideo = 	'https://www.youtube.com/embed/videoseries?list='.$cats[$category][0];
+
+	if (isset($codigovideo))
+		$respuesta  = '<div class="headline"><h4>Vídeos sobre '.$category.'</h4></div>'
+			.'<script src="https://apis.google.com/js/platform.js"></script>'
+			.'<p class="video">Disfruta también de nuestros artículos sobre '.$category.' en formato vídeo. Aprovecha y <a href="https://www.youtube.com/lineadecodigo">suscribete a nuestro canal</a>.</p>'
+			.'<div class="g-ytsubscribe" data-channel="lineadecodigo" data-layout="default" data-count="default"></div>'
+			.'<div class="ratio ratio-16x9">'
+			.'<iframe src="'.$codigovideo.'" allowfullscreen></iframe>'
+			.'</div>';
+
+	return $respuesta;
+
+}
+
+
+/*
+	Función que recibe el id de un psot y recupera el resumen de texto.
+*/
+
+function vcp_get_excerpt_by_id($post_id)
+{
+	$the_post = get_post($post_id); //Gets post ID
+	$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+	$excerpt_length = 20; //Sets excerpt length by word count
+	$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
+	if (count($words) > $excerpt_length):
+		array_pop($words);
+		array_push($words, '…');
+		$the_excerpt = implode(' ', $words);
+	endif;
+	$the_excerpt = '<p>' . $the_excerpt . '</p>';
+	return $the_excerpt;
+}
+
+
+function vcp_get_last_articles($categoria,$filtro,$valor_filtro) {
+
+	/*
+		Función que nos devuelve la estructura de un máximo de 6 artículos que representan los
+		últimos artículos de una categoría, etiqueta o globales
+
+		El filtro elige sin es category o tag
+	*/
+
+	$content = '<section id="last-articles"><header class="headline">';
+
+	if (isset($categoria))
+		$content .= '<h2>Últimos Códigos en '.$categoria.'</h2>';
+	else 
+		$content .= '<h2>Últimos Códigos</h2>';
+
+	$content .= '</header>';
+
+	$content.= '<div class="row row-eq-height">';
+
+	$recent_posts = wp_get_recent_posts(array($filtro => $valor_filtro, 'numberposts' => '6', 'post_status' => 'publish'));
+	$x = 0;
+	foreach ($recent_posts as $recent) {
+
+		$content .= '<div class="col-md-4 col-sm-6">'
+						.'<div class="last-articles d-flex">'
+							.'<div class="flex-shrink-0">'
+								.'<a href="'.get_permalink($recent["ID"]).'">'
+								.'<div class="img-thumbnail rounded float-start">'
+								.get_the_post_thumbnail($recent["ID"], array(75, 75))
+								.'</div>'
+								.'</a>'
+							.'</div>'
+							.'<div class="flex-grow-1 ms-3">'
+								.'<h4 class="media-heading">'
+								.'<a href="' . get_permalink($recent["ID"]) . '" title="' . esc_attr($recent["post_title"]) . '" >' . $recent["post_title"] . '</a>'
+								.'</h4>'
+								.vcp_get_excerpt_by_id($recent["ID"])																
+							.'</div>'
+						.'</div>'
+					.'</div>';
+
+	}
+	$content .= '</div></section>';
+
+	return $content;
+
+}
+
+function vcp_codigo_fuente($titulo) {
+
+	$urlcodigo = get_post_custom_values('descargar');
+	$imgcodigo = get_post_custom_values('codigo');
+	$srepo = '';
+
+	// Recuperamos el repositio de github
+	// Puede haber alguna URL erronea todavía apuntando a code.
+	
+	if ((isset($urlcodigo)) && (str_contains($urlcodigo[0],'github.com'))) {
+		$inicio = strpos($urlcodigo[0], '/',9); // Empiezo evistando el http:// o https://
+		$primerslash = strpos($urlcodigo[0], '/',$inicio+1);
+		$segundoslash = strpos($urlcodigo[0], '/',$primerslash+1);
+		$repo = substr($urlcodigo[0],$inicio+1,$segundoslash-$inicio-1);
+	}
+
+
+	$content = '';
+
+	if ($urlcodigo != '' && str_contains($urlcodigo[0],'github.com'))
+		$content = '<div class="headline">'
+							.'<h4>Código Fuente</h4>'
+						.'</div>'
+						.'<div>'
+							.'Descárgate el código fuente de <strong><a href="'.$urlcodigo[0].'" target="_blank">'.$titulo.'</a></strong><br>'
+							.'<span>Y si te ha gustado nuestro código fuente puedes regalarnos una estrella</span> '							
+							.'<span class="align-middle"><a class="github-button" href="https://github.com/'.$repo.'" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star victorcuervo/lineadecodigo_html on GitHub">Star</a></span>'
+						.'</div>';
+		
+		if ($imgcodigo != '')
+			$content.='<div class="p-3">'
+						.'<a href="'.$urlcodigo[0].'" target="_blank">'
+						.'<img class="img-fluid mx-auto d-block" src="'.$imgcodigo[0].'" alt="'.$titulo.'">' 
+						.'</a></div>';
+
+	return $content;
+
+	
+}
+
+function vcp_codigo_ejecucion() {
+
+	$urlrun = get_post_custom_values('run');
+	$content = '';
+
+	if ($urlrun != '')
+		$content = '<div class="headline">'
+							.'<h4>Ejecuta el Código</h4>'
+						.'</div>'
+						.'<div class="ratio ratio-16x9">'
+							.'<iframe height="400px" src="https://onecompiler.com/embed/'.$urlrun[0].'" width="100%"></iframe>'							
+						.'</div>';
+		
+	return $content;
+
+}
+
+
+/*
+	Función que genera el texto para ayuda en los comentarios y que redirige al foro.
+
+*/
+function vcp_foro($category) {
+
+	$cats = [
+		'AJAX' => 'https://dudasprogramacion.com/javascript?utm_source=lineadecodigo&utm_medium=question&utm_id=javascript&utm_campaign=forum',
+		'Bootstrap' => 'https://dudasprogramacion.com/html/bootstrap?utm_source=lineadecodigo&utm_medium=question&utm_id=bootstrap&utm_campaign=forum',
+		'CSS' => 'https://dudasprogramacion.com/html/css?utm_source=lineadecodigo&utm_medium=question&utm_id=css&utm_campaign=forum',
+		'EmberJS' => 'https://dudasprogramacion.com/javascript/emberjs?utm_source=lineadecodigo&utm_medium=question&utm_id=emberjs&utm_campaign=forum',
+		'Google' => 'https://dudasprogramacion.com/api/api-google?utm_source=lineadecodigo&utm_medium=question&utm_id=api-google&utm_campaign=forum',
+		'Groovy' => 'https://dudasprogramacion.com/java/groovy?utm_source=lineadecodigo&utm_medium=question&utm_id=groovy&utm_campaign=forum',
+		'HTML' => 'https://dudasprogramacion.com/html?utm_source=lineadecodigo&utm_medium=question&utm_id=html&utm_campaign=forum',
+		'HTML5' => 'https://dudasprogramacion.com/html/html5?utm_source=lineadecodigo&utm_medium=question&utm_id=html5&utm_campaign=forum',
+		'Java' => 'https://dudasprogramacion.com/java?utm_source=lineadecodigo&utm_medium=question&utm_id=java&utm_campaign=forum',
+		'Javascript' => 'https://dudasprogramacion.com/javascript?utm_source=lineadecodigo&utm_medium=question&utm_id=javascript&utm_campaign=forum',
+		'jQuery' => 'https://dudasprogramacion.com/javascript/jquery?utm_source=lineadecodigo&utm_medium=question&utm_id=jquery&utm_campaign=forum',
+		'DotNet' => 'https://dudasprogramacion.com/net?utm_source=lineadecodigo&utm_medium=question&utm_id=dotnet&utm_campaign=forum',
+		'MongoDB' => 'https://dudasprogramacion.com/bases-de-datos/mongodb?utm_source=lineadecodigo&utm_medium=question&utm_id=mongodb&utm_campaign=forum',
+		'NodeJS' => 'https://dudasprogramacion.com/javascript/nodejs?utm_source=lineadecodigo&utm_medium=question&utm_id=nodejs&utm_campaign=forum',
+		'PHP' => 'https://dudasprogramacion.com/php?utm_source=lineadecodigo&utm_medium=question&utm_id=php&utm_campaign=forum',
+		'Prototype' => 'https://dudasprogramacion.com/javascript?utm_source=lineadecodigo&utm_medium=question&utm_id=prototype&utm_campaign=forum',
+		'Python' => 'https://dudasprogramacion.com/python?utm_source=lineadecodigo&utm_medium=question&utm_id=python&utm_campaign=forum',
+		'ReactJS' => 'https://dudasprogramacion.com/javascript/reactjs?utm_source=lineadecodigo&utm_medium=question&utm_id=react&utm_campaign=forum',
+		'SQL' => 'https://dudasprogramacion.com/bases-de-datos/sql?utm_source=lineadecodigo&utm_medium=question&utm_id=sql&utm_campaign=forum',
+		'SVG' => 'https://dudasprogramacion.com/html/svg?utm_source=lineadecodigo&utm_medium=question&utm_id=svg&utm_campaign=forum',
+		'Symfony' => 'https://dudasprogramacion.com/php/symfony?utm_source=lineadecodigo&utm_medium=question&utm_id=symfony&utm_campaign=forum',
+		'Typescript' => 'https://dudasprogramacion.com/javascript/typescript?utm_source=lineadecodigo&utm_medium=question&utm_id=typescript&utm_campaign=forum',
+		'XML' => 'https://dudasprogramacion.com/xml?utm_source=lineadecodigo&utm_medium=question&utm_id=xml&utm_campaign=forum',
+	];
+
+
+	if (isset($cats[$category]))
+	 	return '<div class="alert alert-success" role="alert">Antes de enviar tu pregunta comprueba que tiene que ver sobre este artículo. Si tienes alguna <strong>pregunta de caracter general</strong> o necesitas <strong>ayuda con un ejercicio</strong> te recomiendo que <a href="'.$cats[$category].'" target="_blank">utilices nuestro foro sobre '.$category.'</a></div>';
+
+}

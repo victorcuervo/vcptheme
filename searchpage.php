@@ -15,9 +15,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<h2 class="page-title"><?php printf( __( 'Resultados para: "%s"', 'vcp' ), htmlspecialchars($_GET["q"]) ); ?></h2>
-			</header><!-- .page-header -->
-
-			 
+			</header><!-- .page-header -->			 
 
             <script>
 			  (function() {

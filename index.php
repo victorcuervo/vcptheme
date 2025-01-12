@@ -12,8 +12,6 @@ get_header(); ?>
 <div id="cuerpo" class="container">
 	<div class="row">
 		
-
-
 		<?php
 			if ( have_posts() ) :
 				// Start the Loop.

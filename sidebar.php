@@ -20,7 +20,7 @@
                     <a href="<?php the_author_meta('user_url'); ?>" target="_blank" rel="author external"><i class="fa-solid fa-house"></i></a>
                 <? endif; ?>
                 <?php if (get_the_author_meta('twitter')): ?>
-                    <a href="<?php the_author_meta('twitter'); ?>" target="_blank"><i class="fa-brands fa-twitter fa-bounce"></i></a>
+                    <a href="<?php the_author_meta('twitter'); ?>" target="_blank"><i class="fa-brands fa-x fa-bounce"></i></a>
                 <? endif; ?>
                 <?php if (get_the_author_meta('github')): ?>
                     <a href="<?php the_author_meta('github'); ?>" target="_blank"><i class="fa-brands fa-github"></i></a>

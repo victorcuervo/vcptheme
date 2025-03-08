@@ -1021,7 +1021,7 @@ function vcp_getmanual($category) {
 	if (isset($cats[$category]))
 		$respuesta =  '<div class="headline"><h4>Manual '.$category.'</h4></div>'
 				.'<p class="manual">Aprende más sobre '.$category.' <a href="'.$cats[$category][1].'">consultando online o descargando nuestro manual</a>.'
-				.'<div><a href="'.$cats[$category][1].'"><img class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Tutorial '.$category.'"/></a></div>';
+				.'<div><a href="'.$cats[$category][1].'"><img loading="lazy" class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Tutorial '.$category.'"/></a></div>';
 
 	return $respuesta;
 

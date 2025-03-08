@@ -1007,11 +1007,11 @@ add_filter( 'nav_menu_link_attributes', '_namespace_menu_anchor_class', 10, 3 );
 function vcp_getmanual($category) {
 
 	$cats = [
-		'Javascript' => ['/img/tutorials/javascript.png','https://manualweb.net/javascript?utm_source=lineadecodigo&utm_medium=download&utm_id=javascript&utm_campaign=book'],
-		'HTML5' =>  ['/img/tutorials/html5.jpeg','https://manualweb.net/html5?utm_source=lineadecodigo&utm_medium=download&utm_id=html5&utm_campaign=book'],
-		'Java' =>  ['/img/tutorials/java.jpeg','https://manualweb.net/java?utm_source=lineadecodigo&utm_medium=download&utm_id=javas&utm_campaign=book'],
-		'MongoDB' =>  ['/img/tutorials/mongodb.jpeg','https://manualweb.net/mongodb?utm_source=lineadecodigo&utm_medium=download&utm_id=mongodb&utm_campaign=book'],
-		'Python' =>  ['/img/tutorials/python.jpeg','https://manualweb.net/python?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book'],
+		'Javascript' => ['/img/tutorials/javascript.webp','https://manualweb.net/javascript?utm_source=lineadecodigo&utm_medium=download&utm_id=javascript&utm_campaign=book'],
+		'HTML5' =>  ['/img/tutorials/html5.webp','https://manualweb.net/html5?utm_source=lineadecodigo&utm_medium=download&utm_id=html5&utm_campaign=book'],
+		'Java' =>  ['/img/tutorials/java.webp','https://manualweb.net/java?utm_source=lineadecodigo&utm_medium=download&utm_id=javas&utm_campaign=book'],
+		'MongoDB' =>  ['/img/tutorials/mongodb.webp','https://manualweb.net/mongodb?utm_source=lineadecodigo&utm_medium=download&utm_id=mongodb&utm_campaign=book'],
+		'Python' =>  ['/img/tutorials/python.webp','https://manualweb.net/python?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book'],
 		'Dart' => ['/img/tutorials/dart.webp','https://manualweb.net/dart?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book'],
 		'CSS' => ['/img/tutorials/css.webp','https://manualweb.net/css?utm_source=lineadecodigo&utm_medium=download&utm_id=python&utm_campaign=book']
 	];
@@ -1021,7 +1021,7 @@ function vcp_getmanual($category) {
 	if (isset($cats[$category]))
 		$respuesta =  '<div class="headline"><h4>Manual '.$category.'</h4></div>'
 				.'<p class="manual">Aprende más sobre '.$category.' <a href="'.$cats[$category][1].'">consultando online o descargando nuestro manual</a>.'
-				.'<div><a href="'.$cats[$category][1].'"><img loading="lazy" class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Tutorial '.$category.'"/></a></div>';
+				.'<div><a href="'.$cats[$category][1].'"><img loading="lazy" class="img-fluid" src="'.get_template_directory_uri().$cats[$category][0].'"  alt="Descargar el tutorial '.$category.'"/></a></div>';
 
 	return $respuesta;
 

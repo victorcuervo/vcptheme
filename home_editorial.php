@@ -224,6 +224,7 @@ get_header(); ?>
 
 		.titular-1, .titular-2 {
 			font-family: 'Roboto Slab', serif;
+			font-display: swap;
 			margin-bottom: 20px;
 			font-weight: 700;
 			line-height: 1.3;

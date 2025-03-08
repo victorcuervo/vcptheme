@@ -47,7 +47,6 @@
             if (isset($categories) && (sizeof($categories)>=1)) {
                 $category = $categories[0]->cat_name;
                 echo vcp_getmanual($category);
-                //echo vcp_gettest($category);
             }
         ?>
     

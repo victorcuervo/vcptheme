@@ -55,7 +55,7 @@ add_action( 'after_setup_theme', 'vcp_custom_header_setup' );
 function vcp_header_style(){
 		// Modificación del Theme. Añadiendo la imagen y el color
 		?>		
-		<?php $header_image = get_header_image();			
+		<?php $header_image = get_header_image();
 		if ($header_image) { ?>
 				
 			<style>
@@ -93,10 +93,10 @@ function vcp_header_style(){
     	if ($header_color) { ?>
     		<style>
         	#cabecera, #cabecera h1, #cabecera a, #cabecera a:hover, #cabecera small {
-            	color: <?php echo $header_color; ?>;            	            	
+            	color: <?php echo $header_color; ?>;
         	}
-        	</style>    	
-    	<?php }       
+        	</style>
+    	<?php }
 }
 
 

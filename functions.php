@@ -92,9 +92,14 @@ function twentyfourteen_setup() {
 	// Enable support for Post Thumbnails, and declare two sizes.
 
 
-
-
-
+	// Add img-fluid class to all images in the content
+	function vcp_add_img_fluid_class($content) {
+		$content = preg_replace('/<img(.*?)class="(.*?)"/', '<img$1class="$2 img-fluid"', $content);
+		$content = preg_replace('/<img(.*?)class=\'(.*?)\'/', '<img$1class=\'$2 img-fluid\'', $content);
+		$content = preg_replace('/<img((?!class=)[^>])+>/', '<img class="img-fluid"$1>', $content);
+		return $content;
+	}
+	add_filter('the_content', 'vcp_add_img_fluid_class');
 
 	/* 
 	
@@ -323,9 +328,13 @@ add_action( 'widgets_init', 'vcp_widgets_init' );
  */
 function vcp_scripts() {
 
-	wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), '5.3.0' );	
+	wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), '5.3.0' );
 	wp_enqueue_style( 'vcp-style', get_stylesheet_uri());
-	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.3.0',true);	
+	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.3.0',true);
+
+	// Metemos el estilo de una fuente de Google
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap', array(), '1.0' );
+	wp_style_add_data( 'google-fonts', 'preload', 'true' );
 
 	// Quitamos los de Guttemberg
 	wp_dequeue_style( 'wp-block-library');
@@ -950,7 +959,7 @@ function vcp_thumbnail($option,$category = '') {
 /* IMPLEMENTA FUNCIONES EN OTROS FICHEROS */
 
 // Capacidades de la cabecera
-require get_template_directory() . '/inc/custom-header.php';
+// require get_template_directory() . '/inc/custom-header.php';
 
 // Custom template tags for this theme.
 //require get_template_directory() . '/inc/template-tags.php';

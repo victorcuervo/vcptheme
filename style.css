@@ -14,15 +14,59 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 
-/* ------ INICIO TITULARES ------ */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
 
+/* ------ INICIO TITULARES ------ */
 h2  {
 	font-family: "Roboto Slab", serif;
+	font-weight:400;	
+	font-display: swap;
 }
 
 /* ------ FIN TITULARES ------ */
 
+
+/* ------ INICIO CABECERA ------ */
+#cabecera {
+	background: url('/wp-content/themes/vcptheme/img/header/ldc_header.webp') no-repeat center/cover;
+	border-top: 1px solid #fff;
+}
+
+@media (max-width: 480px) {
+	#cabecera {
+		height: 100px;
+		background-image: url('/wp-content/themes/vcptheme/img/header/ldc_header_480.webp');
+	}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+	#cabecera {
+		height: 150px;
+		background-image: url('/wp-content/themes/vcptheme/img/header/ldc_header_768.webp');
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	#cabecera {
+		height: 200px;
+		background-image: url('/wp-content/themes/vcptheme/img/header/ldc_header_1024.webp');
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+	#cabecera {
+		height: 250px;
+		background-image: url('/wp-content/themes/vcptheme/img/header/ldc_header_1280.webp');
+	}
+}
+
+@media (min-width: 1281px) and (max-width: 1920px) {
+	#cabecera {
+		height: 250px;
+		background-image: url('/wp-content/themes/vcptheme/img/header/ldc_header.webp');
+	}
+}
+
+/* ------ FIN CABECERA ------ */
 
 
 
@@ -855,7 +899,10 @@ a code:hover {
 	  border-bottom: 0;
 	  color: inherit;
 	  font-family: "Roboto Slab", serif;
+	  font-weight:400;
+	  font-display: swap;
 	  font-size: 1.125em; }
+	  
 	#header a:hover {
 		text-decoration: none; 
 		color: #3365A3;
